@@ -1,0 +1,81 @@
+/* ── Page Header ── */
+.renew-header {
+  background: linear-gradient(135deg, #0a2e1a 0%, #27ae60 100%);
+  padding: 60px 24px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.renew-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 40%, rgba(39,174,96,0.3) 0%, transparent 60%);
+}
+.renew-header h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 10px; position: relative; }
+.renew-header p  { font-size: 15px; opacity: 0.8; position: relative; }
+
+/* ── Coupon Lookup Result ── */
+.coupon-lookup {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-in);
+  padding: 20px;
+  margin-top: 8px;
+}
+.coupon-lookup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.coupon-status-badge {
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 50px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.coupon-lookup-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ── Info Notice ── */
+.renew-notice {
+  background: rgba(39,174,96,0.08);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 13px;
+  color: var(--navy);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* ── Form Card ── */
+.form-card {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 40px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.form-title    { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+.form-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+.form-group    { margin-bottom: 20px; }
+.form-label    { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.form-row      { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-nav      { display: flex; justify-content: space-between; margin-top: 32px; gap: 12px; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .form-card { padding: 24px 18px; }
+  .form-row  { grid-template-columns: 1fr; }
+}

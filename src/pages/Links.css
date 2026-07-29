@@ -1,0 +1,35 @@
+/* ── Links Grid ── */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.link-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+}
+.link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 12px 12px 28px #c0c5d0, -8px -8px 20px #ffffff;
+}
+.link-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: var(--shadow-out);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) { .links-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .links-grid { grid-template-columns: 1fr; } }
