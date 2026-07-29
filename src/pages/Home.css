@@ -638,13 +638,72 @@
   .timeline-grid { grid-template-columns: 1fr; gap: 48px; }
 }
 @media (max-width: 768px) {
-  .hero-video-section { height: 100svh; }
-  .hero-video-title { font-size: clamp(30px, 8vw, 46px); }
-  .hero-video-sub { font-size: 15px; }
-  .hero-btn-primary, .hero-btn-ghost { padding: 13px 22px; font-size: 14px; }
+  /* ── Hero: full portrait fill, no cutoff ── */
+  .hero-video-section {
+    height: 100svh;
+    min-height: 580px;
+    align-items: flex-end;
+    padding-bottom: 100px;
+  }
+  .hero-video-bg {
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+  }
+  .hero-video-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(13,27,62,0.35) 0%,
+      rgba(13,27,62,0.45) 40%,
+      rgba(13,27,62,0.92) 100%
+    );
+  }
+  .hero-video-content {
+    text-align: left;
+    padding: 0 20px;
+    width: 100%;
+  }
+  .hero-badge-glass {
+    font-size: 11px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+  .hero-video-title {
+    font-size: clamp(28px, 7.5vw, 40px);
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .hero-video-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .hero-actions {
+    justify-content: flex-start !important;
+    gap: 10px;
+  }
+  .hero-btn-primary, .hero-btn-ghost {
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+  /* chips: hide on very small screens to avoid overflow */
+  .chip-glass { font-size: 11px; padding: 5px 12px; }
+  .hero-scroll-indicator { display: none; }
+  .hero-mute-btn { bottom: 90px; right: 16px; width: 38px; height: 38px; }
+
+  /* ── Other sections ── */
   .workflow-flow { grid-template-columns: 1fr; gap: 16px; }
   .flow-arrow { transform: rotate(90deg); }
   .workflow-detail-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
   .campaigns-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .timeline-grid { grid-template-columns: 1fr; gap: 32px; }
+  .workflow-section { padding: 60px 0; }
+  .timeline-section { padding: 60px 0; }
 }

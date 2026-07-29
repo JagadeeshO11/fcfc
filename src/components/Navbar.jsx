@@ -37,7 +37,6 @@ export default function Navbar() {
           <li><NavLink to="/" end>Home</NavLink></li>
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/faq">FAQ</NavLink></li>
-          <li><NavLink to="/links">Links</NavLink></li>
 
           {/* Coupon Dropdown */}
           <li className="dropdown" ref={dropRef}>

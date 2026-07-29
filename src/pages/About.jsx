@@ -1,21 +1,14 @@
-import { Shield, Zap, Globe, Users, Award, Target } from 'lucide-react'
+import { Shield, Zap, Globe, Users, Award, Target, MapPin, Briefcase, Star } from 'lucide-react'
 import logo from '../assets/logo.png'
 import './About.css'
 
-const team = [
-  { name: 'Alex Rivera', role: 'CEO & Founder', initial: 'AR', color: '#4A90D9' },
-  { name: 'Priya Nair', role: 'CTO', initial: 'PN', color: '#6C63FF' },
-  { name: 'Marcus Chen', role: 'Head of Design', initial: 'MC', color: '#27ae60' },
-  { name: 'Sofia Müller', role: 'Blockchain Lead', initial: 'SM', color: '#e67e22' },
-]
-
 const values = [
-  { icon: <Shield size={22} />, title: 'Security First', desc: 'Every coupon is cryptographically secured on-chain.', color: '#4A90D9' },
-  { icon: <Zap size={22} />, title: 'Speed & Scale', desc: 'Process thousands of coupons per second globally.', color: '#6C63FF' },
-  { icon: <Globe size={22} />, title: 'Global Access', desc: 'Available in 150+ countries with multi-currency support.', color: '#27ae60' },
-  { icon: <Users size={22} />, title: 'Community Driven', desc: 'Built with and for our growing community of businesses.', color: '#e67e22' },
-  { icon: <Award size={22} />, title: 'Quality Assured', desc: 'Every feature is rigorously tested before release.', color: '#e74c3c' },
-  { icon: <Target size={22} />, title: 'Results Focused', desc: 'We measure success by the ROI we deliver to clients.', color: '#9b59b6' },
+  { icon: <Shield size={22} />, title: 'Security First',    desc: 'Every Fortune Crowd Fund Coupon is cryptographically secured on-chain.',          color: '#4A90D9' },
+  { icon: <Zap size={22} />,    title: 'Speed & Scale',     desc: 'Process thousands of FCFC coupons per second globally.',                           color: '#6C63FF' },
+  { icon: <Globe size={22} />,  title: 'Global Access',     desc: 'Available in 150+ countries with multi-currency FCFC support.',                    color: '#27ae60' },
+  { icon: <Users size={22} />,  title: 'Community Driven',  desc: 'Built with and for our growing Fortune Crowd Fund Coupon community.',              color: '#e67e22' },
+  { icon: <Award size={22} />,  title: 'Quality Assured',   desc: 'Every FCFC feature is rigorously tested before release.',                          color: '#e74c3c' },
+  { icon: <Target size={22} />, title: 'Results Focused',   desc: 'We measure success by the returns we deliver to every FCFC community member.',     color: '#9b59b6' },
 ]
 
 export default function About() {
@@ -23,9 +16,10 @@ export default function About() {
     <main>
       <div className="page-header">
         <h1>About FCFC</h1>
-        <p>The next-generation coupon campaign platform powered by blockchain.</p>
+        <p>Fortune Crowd Fund Coupon — the next-generation community coupon platform powered by blockchain.</p>
       </div>
 
+      {/* ── Story ── */}
       <section className="section">
         <div className="page-wrapper">
           <div className="about-grid">
@@ -33,15 +27,15 @@ export default function About() {
               <div className="hero-badge" style={{ marginBottom: 20 }}>
                 <Award size={14} /> Our Story
               </div>
-              <h2 className="section-title">Building the Future of Coupon Campaigns</h2>
+              <h2 className="section-title">Building the Future of Community Coupons</h2>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 20 }}>
-                FCFC was founded in 2023 with a simple mission: make coupon campaigns transparent, fraud-proof, and accessible to every business — from solo entrepreneurs to Fortune 500 companies.
+                FCFC — Fortune Crowd Fund Coupon — was founded with a simple mission: make coupon campaigns transparent, fraud-proof, and accessible to every community member, from individuals to global enterprises.
               </p>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 32 }}>
-                By leveraging blockchain technology, we've eliminated coupon fraud, reduced redemption disputes, and created a trustless ecosystem where businesses and consumers can transact with confidence.
+                By leveraging blockchain technology, we've eliminated coupon fraud, created a trustless FCFC ecosystem, and built a self-sustaining crowd-funded coupon network that rewards every participant.
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                {[['2023', 'Founded'], ['38K+', 'Active Users'], ['124K+', 'Coupons Minted'], ['150+', 'Countries']].map(([n, l]) => (
+                {[['2023', 'Founded'], ['38K+', 'Active Members'], ['124K+', 'FCFCs Minted'], ['150+', 'Countries']].map(([n, l]) => (
                   <div key={l} className="neu-card" style={{ padding: '20px 24px', textAlign: 'center' }}>
                     <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--navy)' }}>{n}</div>
                     <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4 }}>{l}</div>
@@ -57,15 +51,15 @@ export default function About() {
                   <span style={{ fontSize: 22, fontWeight: 800 }}>FCFC</span>
                 </div>
                 <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, fontSize: 15 }}>
-                  "We believe every business deserves access to enterprise-grade coupon infrastructure — without the enterprise price tag."
+                  "Every community member deserves access to a Fortune Crowd Fund Coupon — a system that multiplies value with every redemption and grows the crowd with every transfer."
                 </p>
-                <div style={{ marginTop: 16, fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>— Alex Rivera, CEO</div>
+                <div style={{ marginTop: 16, fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>— Mr. James Knight, CEO</div>
               </div>
 
               <div className="neu-card">
                 <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--navy)', marginBottom: 16 }}>Our Mission</h3>
                 <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                  To democratize coupon campaigns through blockchain transparency, making fraud a thing of the past and empowering businesses of all sizes to run effective, verifiable promotions.
+                  To democratize coupon campaigns through the Fortune Crowd Fund Coupon model — making fraud a thing of the past and empowering communities of all sizes to run effective, verifiable, and self-multiplying promotions.
                 </p>
               </div>
             </div>
@@ -73,12 +67,60 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* ── CEO Spotlight ── */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="page-wrapper">
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <h2 className="section-title">Leadership</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>The visionary behind Fortune Crowd Fund Coupon.</p>
+          </div>
+
+          <div className="ceo-card">
+            <div className="ceo-avatar">
+              <span>JK</span>
+            </div>
+            <div className="ceo-info">
+              <div className="ceo-name">Mr. James Knight</div>
+              <div className="ceo-title">Chief Executive Officer &amp; Founder</div>
+
+              <div className="ceo-meta">
+                <div className="ceo-meta-item">
+                  <MapPin size={15} color="var(--accent)" />
+                  <span>Born in the United Kingdom · Now settled in British Virgin Islands (BVI)</span>
+                </div>
+                <div className="ceo-meta-item">
+                  <Briefcase size={15} color="var(--accent)" />
+                  <span>20+ Years of Experience in Financial Management</span>
+                </div>
+                <div className="ceo-meta-item">
+                  <Star size={15} color="#e67e22" />
+                  <span>Founder of FCFC — Fortune Crowd Fund Coupon</span>
+                </div>
+              </div>
+
+              <p className="ceo-desc">
+                Mr. James Knight is a seasoned financial management expert with over two decades of experience spanning investment strategy, crowd funding, and digital asset ecosystems. Born in the United Kingdom and now based in the British Virgin Islands, James brings a truly global perspective to the Fortune Crowd Fund Coupon platform. His vision of a self-sustaining, community-powered coupon economy is the foundation upon which FCFC was built — a system where every member of the crowd benefits from every transaction.
+              </p>
+
+              <div className="ceo-stats">
+                {[['20+', 'Years Experience'], ['150+', 'Countries Reached'], ['$2.4M+', 'Value Cycled'], ['38K+', 'Community Members']].map(([n, l]) => (
+                  <div key={l} className="ceo-stat">
+                    <div className="ceo-stat-num">{n}</div>
+                    <div className="ceo-stat-label">{l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Values ── */}
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="page-wrapper">
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <h2 className="section-title">Our Core Values</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>The principles that guide everything we build.</p>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>The principles that guide every Fortune Crowd Fund Coupon we issue.</p>
           </div>
           <div className="feature-grid">
             {values.map(v => (
@@ -88,27 +130,6 @@ export default function About() {
                 </div>
                 <div className="feature-title">{v.title}</div>
                 <div className="feature-desc">{v.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="page-wrapper">
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 className="section-title">Meet the Team</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>The people building the future of coupon campaigns.</p>
-          </div>
-          <div className="team-grid">
-            {team.map(m => (
-              <div key={m.name} className="team-card">
-                <div className="team-avatar" style={{ background: `linear-gradient(135deg, ${m.color}, ${m.color}99)` }}>
-                  {m.initial}
-                </div>
-                <div style={{ fontWeight: 700, color: 'var(--navy)', fontSize: 15, marginBottom: 4 }}>{m.name}</div>
-                <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>{m.role}</div>
               </div>
             ))}
           </div>
