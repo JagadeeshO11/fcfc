@@ -19,88 +19,73 @@ const stats = [
 
 const flowSteps = [
   {
-    num: 1, emoji: '🧑‍💼', title: 'User A Buys',
-    desc: 'Backer purchases a $50 Fortune Crowd Fund Coupon on-chain',
+    num: 1, emoji: '💳', title: 'Generate Coupon',
+    desc: 'Purchase a $50 Fortune Crowd Fund Coupon, verified on-chain with a unique QR code.',
     amount: '$50', color: '#4A90D9', bg: 'rgba(74,144,217,0.12)'
   },
   {
-    num: 2, emoji: '🔁', title: 'FCFC Transfer',
-    desc: 'Coupon is transferred to User B via FCFC smart contract',
+    num: 2, emoji: '📤', title: 'Submit Coupon',
+    desc: 'Submit the coupon via the FCFC platform to unlock the reward bundle.',
     amount: 'FCFC', color: '#6C63FF', bg: 'rgba(108,99,255,0.12)'
   },
   {
-    num: 3, emoji: '🛒', title: 'User B Redeems',
-    desc: 'User B redeems coupon + pays $20 extra to the FCFC platform',
-    amount: '+$20', color: '#e67e22', bg: 'rgba(230,126,34,0.12)'
-  },
-  {
-    num: 4, emoji: '🎟️', title: '3 New Coupons',
-    desc: 'User B receives 3 new Fortune Crowd Fund Coupons instantly',
+    num: 3, emoji: '🎟️', title: '3 New Coupons',
+    desc: '3 new Fortune Crowd Fund Coupons worth $30 each are instantly generated.',
     amount: '×3', color: '#27ae60', bg: 'rgba(39,174,96,0.12)'
   },
 ]
 
-const detailCards = [
-  {
-    cls: 'card-a', emoji: '🧑‍💼', title: 'User A — The Backer',
-    role: 'FCFC Originator', roleColor: '#4A90D9',
-    desc: 'User A funds the Fortune Crowd Fund Coupon ecosystem by purchasing the initial $50 FCFC coupon. This seeds the community and starts the cycle.',
-    ledger: [
-      { label: 'FCFC Purchase',   val: '-$50.00', type: 'negative' },
-      { label: 'Coupon Value',    val: '$50.00',  type: 'positive' },
-      { label: 'Community Reward', val: '+$8.00', type: 'positive' },
-      { label: 'Net Position',    val: '-$42.00', type: '' },
-    ]
-  },
-  {
-    cls: 'card-b', emoji: '🤝', title: 'User B — The Redeemer',
-    role: 'FCFC Redeemer', roleColor: '#6C63FF',
-    desc: 'User B receives the $50 Fortune Crowd Fund Coupon, redeems it on the FCFC platform, and pays an extra $20 to unlock 3 new FCFC coupons worth $30 each.',
-    ledger: [
-      { label: 'FCFC Received',   val: '$50.00',  type: 'positive' },
-      { label: 'Extra Payment',   val: '-$20.00', type: 'negative' },
-      { label: '3 New FCFCs',     val: '$90.00',  type: 'positive' },
-      { label: 'Net Profit',      val: '+$70.00', type: 'positive' },
-    ]
-  },
-  {
-    cls: 'card-c', emoji: '🌐', title: 'Community Expansion',
-    role: 'FCFC Growth Engine', roleColor: '#27ae60',
-    desc: 'The 3 new Fortune Crowd Fund Coupons are split to 3 new community members, each seeding a new FCFC cycle — the crowd grows 3× with every redemption.',
-    ledger: [
-      { label: 'FCFCs Issued',    val: '×3',   type: 'positive' },
-      { label: 'New FCFC Cycles', val: '×3',   type: 'positive' },
-      { label: 'Cost Recovery',   val: '100%', type: 'positive' },
-      { label: 'Crowd Growth',    val: '3×',   type: 'positive' },
-    ]
-  },
-]
+// const detailCards = [
+//   {
+//     cls: 'card-a', emoji: '🧑‍💼', title: 'User A — The Backer',
+//     role: 'FCFC Originator', roleColor: '#4A90D9',
+//     desc: 'User A funds the Fortune Crowd Fund Coupon ecosystem by purchasing the initial $50 FCFC coupon. This seeds the community and starts the cycle.',
+//     ledger: [
+//       { label: 'FCFC Purchase',   val: '-$50.00', type: 'negative' },
+//       { label: 'Coupon Value',    val: '$50.00',  type: 'positive' },
+//       { label: 'Community Reward', val: '+$8.00', type: 'positive' },
+//       { label: 'Net Position',    val: '-$42.00', type: '' },
+//     ]
+//   },
+//   {
+//     cls: 'card-b', emoji: '🤝', title: 'User B — The Redeemer',
+//     role: 'FCFC Redeemer', roleColor: '#6C63FF',
+//     desc: 'User B receives the $50 Fortune Crowd Fund Coupon, redeems it on the FCFC platform, and pays an extra $20 to unlock 3 new FCFC coupons worth $30 each.',
+//     ledger: [
+//       { label: 'FCFC Received',   val: '$50.00',  type: 'positive' },
+//       { label: 'Extra Payment',   val: '-$20.00', type: 'negative' },
+//       { label: '3 New FCFCs',     val: '$90.00',  type: 'positive' },
+//       { label: 'Net Profit',      val: '+$70.00', type: 'positive' },
+//     ]
+//   },
+//   {
+//     cls: 'card-c', emoji: '🌐', title: 'Community Expansion',
+//     role: 'FCFC Growth Engine', roleColor: '#27ae60',
+//     desc: 'The 3 new Fortune Crowd Fund Coupons are split to 3 new community members, each seeding a new FCFC cycle — the crowd grows 3× with every redemption.',
+//     ledger: [
+//       { label: 'FCFCs Issued',    val: '×3',   type: 'positive' },
+//       { label: 'New FCFC Cycles', val: '×3',   type: 'positive' },
+//       { label: 'Cost Recovery',   val: '100%', type: 'positive' },
+//       { label: 'Crowd Growth',    val: '3×',   type: 'positive' },
+//     ]
+//   },
+// ]
 
 const timelineSteps = [
   {
-    emoji: '💳', step: 'Step 01', title: 'Purchase Fortune Crowd Fund Coupon',
-    desc: 'User A buys a $50 FCFC — Fortune Crowd Fund Coupon — verified on-chain instantly with a unique QR code and wallet signature.',
+    emoji: '💳', step: 'Step 01', title: 'Generate Coupon',
+    desc: 'A $50 FCFC — Fortune Crowd Fund Coupon — is generated and verified on-chain instantly with a unique QR code and wallet signature.',
     color: '#4A90D9'
   },
   {
-    emoji: '📤', step: 'Step 02', title: 'FCFC Transfer to User B',
-    desc: 'The Fortune Crowd Fund Coupon is transferred via the FCFC smart contract. No intermediaries, no fees — fully trustless on-chain delivery.',
+    emoji: '📤', step: 'Step 02', title: 'Submit Coupon',
+    desc: 'The Fortune Crowd Fund Coupon is submitted via the FCFC platform. No intermediaries, no fees — fully trustless on-chain delivery.',
     color: '#6C63FF'
   },
   {
-    emoji: '✅', step: 'Step 03', title: 'Redeem + Pay $20 Extra',
-    desc: 'User B redeems the $50 FCFC on the platform and pays an additional $20 to unlock the Fortune Crowd Fund Coupon reward bundle.',
-    color: '#e67e22'
-  },
-  {
-    emoji: '🎁', step: 'Step 04', title: 'Receive 3 New FCFCs',
-    desc: 'User B instantly receives 3 new Fortune Crowd Fund Coupons worth $30 each. Total value: $90 — a $70 net gain on a $20 investment.',
+    emoji: '🎁', step: 'Step 03', title: 'Generate 3 Coupons',
+    desc: '3 new Fortune Crowd Fund Coupons worth $30 each are instantly generated. Total value: $90 — a $70 net gain on a $20 investment.',
     color: '#27ae60'
-  },
-  {
-    emoji: '🔀', step: 'Step 05', title: 'Split & Grow the Crowd',
-    desc: 'User B splits the 3 FCFCs to 3 new community members, each starting their own Fortune Crowd Fund Coupon cycle. The crowd grows 3× with every redemption.',
-    color: '#9b59b6'
   },
 ]
 
@@ -145,26 +130,26 @@ export default function Home() {
             </div>
 
             <h1 className="hero-col-title">
-              Buy. Transfer. Redeem.<br />
-              <span className="highlight">Multiply Your Coupons</span><br />
-              On-Chain.
+              Self Crowd-Fund Through Coupon-Based Support.
             </h1>
 
             <p className="hero-col-sub">
-              FCFC — Fortune Crowd Fund Coupon. User A buys a $50 coupon → transfers to User B → User B redeems + pays $20 → gets 3 new FCFCs → splits to grow the crowd. Fully on-chain. Zero fraud.
+              Raise your dreams with the power of your network.
+              <br />
+              Share coupons, earn support and make it happen — together.
             </p>
 
             <div className="hero-actions">
-              <Link to="/coupon/generate" className="hero-btn-primary">
-                <Ticket size={17} /> Get Your FCFC
+              <Link to="/campaign/start" className="hero-btn-primary">
+                Start Your Campaign <ArrowRight size={15} />
               </Link>
-              <Link to="/coupon/submit" className="hero-btn-ghost-dark">
-                Redeem Now <ArrowRight size={15} />
+              <Link to="/how-it-works" className="hero-btn-ghost-dark">
+                How It Works ▶
               </Link>
             </div>
 
             <div className="hero-chips">
-              {['$50 FCFC Coupon', '+$20 = 3 FCFCs', 'Crowd Transfer', 'Zero Fraud'].map(t => (
+              {['SUPPORT · SHARE · SUCCEED', 'One Coupon. Many Dreams.', 'Fortune COUPON'].map(t => (
                 <div key={t} className="chip-dark">
                   <CheckCircle size={12} color="#4ade80" /> {t}
                 </div>
@@ -202,12 +187,12 @@ export default function Home() {
       {/* ══ FCFC WORKFLOW ══ */}
       <section className="workflow-section">
         <div className="page-wrapper">
-          <div className="workflow-header">
+          <div className="workflow-header" style={{ textAlign: 'center' }}>
             <div className="workflow-eyebrow">
               <GitMerge size={13} /> How FCFC Works
             </div>
             <h2 className="section-title">The Fortune Crowd Fund Coupon Cycle</h2>
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+            <p className="section-subtitle" style={{ margin: '0 auto 48px' }}>
               FCFC — Fortune Crowd Fund Coupon. A self-sustaining ecosystem where every redemption funds 3 new free coupons, growing the crowd exponentially while rewarding every participant.
             </p>
           </div>
@@ -234,8 +219,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Detail cards */}
-          <div className="workflow-detail-grid">
+          
+          {/* <div className="workflow-detail-grid">
             {detailCards.map(c => (
               <div key={c.title} className={`workflow-detail-card ${c.cls}`}>
                 <div className="wdc-avatar" style={{ background: `${c.roleColor}15` }}>
@@ -254,7 +239,7 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -270,7 +255,7 @@ export default function Home() {
               </div>
               <h2 className="section-title" style={{ marginBottom: 12 }}>How FCFC Works</h2>
               <p className="section-subtitle" style={{ marginBottom: 48 }}>
-                Five simple steps that power the Fortune Crowd Fund Coupon cycle — an unstoppable self-growing community coupon network.
+                Three simple steps that power the Fortune Crowd Fund Coupon cycle.
               </p>
               <div className="timeline-list">
                 {timelineSteps.map(t => (
@@ -303,25 +288,25 @@ export default function Home() {
 
               <div className="tv-transfer">
                 <div className="tv-user">
-                  <div className="tv-user-emoji">🧑‍💼</div>
-                  <div className="tv-user-name">User A</div>
-                  <div className="tv-user-role">FCFC Backer</div>
+                  <div className="tv-user-emoji">💳</div>
+                  <div className="tv-user-name">Generate</div>
+                  <div className="tv-user-role">FCFC Coupon</div>
                 </div>
                 <div className="tv-arrow-wrap">
                   <div className="tv-arrow-line" />
-                  <div className="tv-arrow-amount">FCFC Transfer</div>
+                  <div className="tv-arrow-amount">Submit</div>
                   <div className="tv-arrow-line" />
                 </div>
                 <div className="tv-user">
-                  <div className="tv-user-emoji">🤝</div>
-                  <div className="tv-user-name">User B</div>
-                  <div className="tv-user-role">FCFC Redeemer</div>
+                  <div className="tv-user-emoji">🎟️</div>
+                  <div className="tv-user-name">3 Coupons</div>
+                  <div className="tv-user-role">FCFC Reward</div>
                 </div>
               </div>
 
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16, marginTop: 4 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)', marginBottom: 12 }}>
-                  User B Redeems FCFC + Pays $20 → Gets 3 New FCFCs
+                  Submit FCFC Coupon → Get 3 New FCFCs
                 </div>
                 <div className="tv-split">
                   {[['🎟️', '$30', 'FCFC #1'], ['🎟️', '$30', 'FCFC #2'], ['🎟️', '$30', 'FCFC #3']].map(([e, v, l]) => (
@@ -333,7 +318,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div style={{ marginTop: 16, background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: 10, padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>Net Gain for User B</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>Net Gain</span>
                   <span style={{ fontSize: 16, fontWeight: 800, color: '#4ade80' }}>+$70.00</span>
                 </div>
               </div>

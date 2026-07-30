@@ -3,40 +3,39 @@ import { ChevronDown, HelpCircle, MessageCircle, Play } from 'lucide-react'
 import faqVideo from '../assets/faq-video.mp4'
 import heroVideo from '../assets/hero-video.mp4'
 import couponArbitrageVideo from '../assets/coupon-arbitrage.mp4'
-import noDollarVideo from '../assets/no-dollar-coupon.mp4'
 import './FAQ.css'
 
 const faqs = [
   {
     category: 'General',
     items: [
-      { q: 'What is FCFC?', a: 'FCFC is a blockchain-powered coupon campaign platform that lets businesses create, manage, and track coupons with full transparency and zero fraud.' },
-      { q: 'Is FCFC free to use?', a: 'FCFC offers a free tier for up to 100 coupons per month. For larger campaigns, we offer Pro and Enterprise plans with advanced features.' },
-      { q: 'Which blockchains does FCFC support?', a: 'We currently support Ethereum, Polygon, BNB Chain, and Solana. More chains are being added regularly.' },
+      { q: "What does 'Self Crowd Fund Through Coupon Based' mean?", a: "It means you can raise support by creating a campaign and sharing unique FCFC coupons—people show support by using or purchasing those coupons, which funds your goal while growing your network." },
+      { q: 'How do I start a campaign on FCFC?', a: 'Create a campaign with your story and goal, set a coupon offering, then share the coupon link with your network to begin receiving support.' },
+      { q: 'What is the typical campaign flow?', a: 'Create campaign → Generate coupons → Share with network → Supporters use/purchase coupons → Funds aggregate toward the campaign goal.' },
     ]
   },
   {
     category: 'Coupons',
     items: [
-      { q: 'How do I generate a coupon?', a: 'Navigate to Coupon → Generate Coupon, fill in your campaign details, set the discount value and validity period, then click Generate. Your coupon is minted on-chain instantly.' },
-      { q: 'Can I renew an expired coupon?', a: 'Yes! Use the Renew Coupon page to extend the validity of any coupon you own. Simply enter the coupon code and set a new expiry date.' },
-      { q: 'How many coupons can I create per campaign?', a: 'There is no hard limit. Free accounts can create up to 1,000 coupons per campaign. Pro accounts have unlimited coupon generation.' },
-      { q: 'Are coupon codes case-sensitive?', a: 'No, coupon codes are automatically converted to uppercase and are not case-sensitive during redemption.' },
+      { q: 'What makes an FCFC coupon special?', a: 'FCFC coupons are smart, unique and trackable—each has a distinct code/QR and on-chain verification so support is transparent and tamper-proof.' },
+      { q: 'How do I share coupons to get support?', a: 'Generate coupons from your campaign dashboard, then share them via link, social, or direct messaging—every share increases reach and potential backers.' },
+      { q: 'Can one coupon really help many people?', a: 'Yes—FCFC is designed so a single coupon can trigger distribution mechanics that scale community support, amplifying impact across members.' },
     ]
   },
   {
-    category: 'Payments & Wallet',
+    category: 'Payments gateway',
     items: [
-      { q: 'Which wallets are supported?', a: 'We support MetaMask, WalletConnect, Coinbase Wallet, and most EVM-compatible wallets. Phantom is supported for Solana campaigns.' },
-      { q: 'Are there gas fees?', a: 'Gas fees depend on the blockchain you choose. Polygon and BNB Chain have minimal fees (often under $0.01). Ethereum mainnet fees vary with network congestion.' },
-      { q: 'Can I pay without a crypto wallet?', a: 'Yes! We also accept credit/debit card payments for campaign creation. Wallet connection is optional for basic features.' },
+      { q: 'How do supporters pay or contribute?', a: 'Supporters can use the integrated payments gateway (cards) or connected wallets; payments convert into campaign support according to the coupon rules you configure.' },
+      { q: 'Which payment methods are supported?', a: 'FCFC supports common card payments and major crypto wallets; available options depend on region and the campaign settings.' },
+      { q: 'Are there fees or currency conversions?', a: 'Fees and conversions depend on the chosen payment provider and blockchain used; we surface expected charges during campaign setup so you can plan accordingly.' },
     ]
   },
   {
     category: 'Security',
     items: [
-      { q: 'How does FCFC prevent coupon fraud?', a: 'Every coupon is cryptographically signed and recorded on-chain. Each redemption is verified against the blockchain, making duplication and forgery impossible.' },
-      { q: 'Is my data safe?', a: 'We follow industry-standard security practices. Campaign metadata is stored on IPFS, and sensitive user data is encrypted at rest and in transit.' },
+      { q: 'How is coupon fraud prevented?', a: 'Each coupon is recorded and signed on-chain, and redemptions are validated cryptographically—this prevents duplication and ensures authenticity.' },
+      { q: 'Where is campaign data stored?', a: 'Campaign metadata is stored with verifiable, tamper-evident methods (e.g., IPFS) while sensitive user info follows encryption and privacy best practices.' },
+      { q: 'How transparent are funds and redemptions?', a: 'FCFC provides transparent ledgers for coupon issuance and redemption so creators and supporters can audit activity and trust outcomes.' },
     ]
   },
 ]
@@ -63,7 +62,7 @@ export default function FAQ() {
     <main>
       {/* ── Hero: full-bleed video background ── */}
       <section className="faq-hero">
-        <video className="faq-hero-video" src={faqVideo} autoPlay loop muted playsInline />
+        <video className="faq-hero-video" src={couponArbitrageVideo} autoPlay loop muted playsInline />
         <div className="faq-hero-overlay" />
         <div className="faq-hero-content">
           <div className="faq-hero-badge">
@@ -72,7 +71,7 @@ export default function FAQ() {
           <h1>Frequently Asked Questions</h1>
           <p>Everything you need to know about FCFC and coupon campaigns.</p>
           <div className="faq-hero-stats">
-            {[['50+', 'Questions Answered'], ['24/7', 'Support Available'], ['38K+', 'Community Members'], ['4', 'Categories']].map(([n, l]) => (
+            {[['50+', 'Questions Answered'], ['24/7', 'Support Available'], ['38K+', 'Community Members']].map(([n, l]) => (
               <div key={l} className="faq-hero-stat">
                 <div className="faq-hero-stat-num">{n}</div>
                 <div className="faq-hero-stat-label">{l}</div>
@@ -88,7 +87,7 @@ export default function FAQ() {
           <div className="faq-body">
 
             {/* Left: accordion */}
-            <div>
+            <div className="faq-accordion">
               {/* Category filters */}
               <div className="faq-filters">
                 {categories.map(c => (
@@ -121,14 +120,7 @@ export default function FAQ() {
               </div>
             </div>
 
-            {/* Right: sticky video panel */}
-            <div className="faq-side-video">
-              <video src={faqVideo} autoPlay loop muted playsInline />
-              <div className="faq-side-label">
-                <h4>See How FCFC Works</h4>
-                <p>Watch the walkthrough to understand the full coupon arbitrage workflow from generation to redemption.</p>
-              </div>
-            </div>
+            {/* Right-side video panel removed per request */}
 
           </div>
         </div>
@@ -148,10 +140,8 @@ export default function FAQ() {
           </div>
           <div className="faq-video-grid">
             {[
-              { src: faqVideo,             title: 'FCFC Platform Overview',          desc: 'A complete walkthrough of the Fortune Crowd Fund Coupon platform and how it works.' },
-              { src: heroVideo,            title: 'How the FCFC Cycle Works',        desc: 'See the full Buy → Transfer → Redeem → Multiply cycle in action on-chain.' },
-              { src: couponArbitrageVideo, title: 'Coupon Arbitrage Workflow',       desc: 'Detailed breakdown of the coupon arbitrage workflow and how value is distributed.' },
-              { src: noDollarVideo,        title: 'Coupon Display & Redemption',     desc: 'How coupons are displayed, redeemed, and verified without exposing dollar values.' },
+              { src: faqVideo,          title: 'FCFC Platform Overview',     desc: 'A complete walkthrough of the Fortune Crowd Fund Coupon platform and how it works.' },
+              { src: heroVideo,         title: 'How the FCFC Cycle Works', desc: 'See the full Buy → Transfer → Redeem → Multiply cycle in action on-chain.' },
             ].map(v => (
               <div key={v.title} className="faq-video-card">
                 <div className="faq-video-wrap">

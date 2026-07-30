@@ -29,6 +29,7 @@ export default function Footer() {
           <Link to="/coupon/generate">Generate Coupon</Link>
           <Link to="/coupon/submit">Submit Coupon</Link>
           <Link to="/coupon/renew">Renew Coupon</Link>
+          <Link to="/admin/login">Admin Panel</Link>
           <Link to="/coupon/search">Search Coupon</Link>
         </div>
 
@@ -56,6 +57,7 @@ export default function Footer() {
           <a href="#">Terms of Service</a>
         </div>
       </div>
+      
     </footer>
   )
 }

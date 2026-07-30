@@ -17,9 +17,9 @@ export default function About() {
     <main>
       <div className="page-header">
         <h1>About FCFC</h1>
-        <p>Fortune Crowd Fund Coupon — the next-generation community coupon platform powered by blockchain.</p>
+        <p>Self Crowd-Fund through coupon-based support — raise your dream with your network.</p>
         <div className="about-header-stats">
-          {[['2023', 'Founded'], ['38K+', 'Active Members'], ['$2.4M', 'Value Cycled'], ['150+', 'Countries']].map(([n, l]) => (
+          {[['2,500+', 'Happy Supporters'], ['18,000+', 'Coupons Shared'], ['₹3.25 Cr+', 'Funds Raised'], ['650+', 'Dreams Supported']].map(([n, l]) => (
             <div key={l} className="about-header-stat">
               <div className="about-header-stat-num">{n}</div>
               <div className="about-header-stat-label">{l}</div>
@@ -36,15 +36,15 @@ export default function About() {
               <div className="hero-badge" style={{ marginBottom: 20 }}>
                 <Award size={14} /> Our Story
               </div>
-              <h2 className="section-title">Building the Future of Community Coupons</h2>
+              <h2 className="section-title">Building the Future of Community Support</h2>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 20 }}>
-                FCFC — Fortune Crowd Fund Coupon — was founded with a simple mission: make coupon campaigns transparent, fraud-proof, and accessible to every community member, from individuals to global enterprises.
+                FCFC empowers creators and communities to fund goals using unique, trackable coupons. Share your story, create a campaign, distribute coupons, and let your network show support — transparently and securely.
               </p>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 32 }}>
-                By leveraging blockchain technology, we've eliminated coupon fraud, created a trustless FCFC ecosystem, and built a self-sustaining crowd-funded coupon network that rewards every participant.
+                Our ecosystem focuses on impact: one coupon can multiply support across a community, turning individual contributions into measurable, collective progress.
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                {[['2023', 'Founded'], ['38K+', 'Active Members'], ['124K+', 'FCFCs Minted'], ['150+', 'Countries']].map(([n, l]) => (
+                {[['2,500+', 'Happy Supporters'], ['18,000+', 'Coupons Shared'], ['₹3.25 Cr+', 'Funds Raised'], ['650+', 'Dreams Supported']].map(([n, l]) => (
                   <div key={l} className="neu-card" style={{ padding: '20px 24px', textAlign: 'center' }}>
                     <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--navy)' }}>{n}</div>
                     <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4 }}>{l}</div>

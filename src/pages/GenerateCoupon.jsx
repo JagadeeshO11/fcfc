@@ -2,26 +2,52 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Ticket, ChevronRight, ChevronLeft } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
-import QRModal from '../components/QRModal'
 import './GenerateCoupon.css'
 
-const steps = ['Campaign Info', 'Coupon Details', 'Review & Generate']
+const steps = ['Details & Verify', 'Payment', 'Review & Generate']
 
 export default function GenerateCoupon() {
   const [step, setStep] = useState(0)
-  const [showQR, setShowQR] = useState(false)
-  const [form, setForm] = useState({ name: '', category: '', startDate: '', endDate: '', discount: '', maxUses: '', code: '', description: '' })
+  const [form, setForm] = useState({ name: '', email: '', category: '', startDate: '', endDate: '', discount: '', maxUses: '', code: '', description: '' })
+  const [otpSentCode, setOtpSentCode] = useState('')
+  const [otpInput, setOtpInput] = useState('')
+  const [otpVerified, setOtpVerified] = useState(false)
+  const [paymentDone, setPaymentDone] = useState(false)
+  const [card, setCard] = useState({ nameOnCard: '', number: '' })
+  const [generatedCode, setGeneratedCode] = useState('')
   const navigate = useNavigate()
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
   const handleGenerate = () => {
-    setShowQR(true)
+    // ensure coupon code exists
+    let code = form.code
+    if (!code) {
+      code = `FCFC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`
+      setForm(f => ({ ...f, code }))
+    }
+    const now = new Date().toISOString()
+    setGeneratedCode(code)
+    // persist generated coupon to localStorage for admin review
+    try {
+      const existing = JSON.parse(localStorage.getItem('generatedCoupons') || '[]')
+      existing.unshift({
+        code,
+        campaign: form.name || '—',
+        email: form.email || '—',
+        discount: form.discount || '—',
+        createdAt: now,
+        verifiedAt: now,
+      })
+      localStorage.setItem('generatedCoupons', JSON.stringify(existing.slice(0, 200)))
+    } catch (e) {
+      // ignore storage errors
+    }
   }
 
-  const handleQRClose = () => {
-    setShowQR(false)
-    navigate('/thank-you')
+  const copyCode = (c) => {
+    navigator.clipboard.writeText(c)
+    alert('Coupon code copied to clipboard')
   }
 
   return (
@@ -39,62 +65,52 @@ export default function GenerateCoupon() {
             {step === 0 && (
               <>
                 <div className="form-title">Campaign Information</div>
-                <div className="form-subtitle">Tell us about your campaign basics.</div>
+                <div className="form-subtitle">Enter your details and verify via OTP.</div>
                 <div className="form-group">
                   <label className="form-label">Campaign Name</label>
                   <input className="neu-input" placeholder="e.g. Summer Mega Sale 2025" value={form.name} onChange={e => set('name', e.target.value)} />
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Category</label>
-                    <select className="neu-input" value={form.category} onChange={e => set('category', e.target.value)}>
-                      <option value="">Select category</option>
-                      {['Retail', 'Food', 'Travel', 'Tech', 'Health', 'Entertainment'].map(c => <option key={c}>{c}</option>)}
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Max Uses</label>
-                    <input className="neu-input" type="number" placeholder="e.g. 1000" value={form.maxUses} onChange={e => set('maxUses', e.target.value)} />
-                  </div>
+                <div className="form-group">
+                  <label className="form-label">Email</label>
+                  <input className="neu-input" placeholder="you@example.com" value={form.email} onChange={e => set('email', e.target.value)} />
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Start Date</label>
-                    <input className="neu-input" type="date" value={form.startDate} onChange={e => set('startDate', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">End Date</label>
-                    <input className="neu-input" type="date" value={form.endDate} onChange={e => set('endDate', e.target.value)} />
-                  </div>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 8 }}>
+                  <button className="neu-btn" onClick={() => {
+                    const code = Math.floor(100000 + Math.random() * 900000).toString()
+                    setOtpSentCode(code)
+                    setOtpVerified(false)
+                  }}>Send OTP</button>
+                  <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>OTP will be displayed here for demo purposes.</div>
                 </div>
+                {otpSentCode && (
+                  <div style={{ marginTop: 12 }}>
+                    <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 6 }}>Enter OTP (demo code: <strong style={{ color: 'var(--navy)' }}>{otpSentCode}</strong>)</div>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <input className="neu-input" placeholder="123456" value={otpInput} onChange={e => setOtpInput(e.target.value)} />
+                      <button className="neu-btn" onClick={() => setOtpVerified(otpInput === otpSentCode)}>Verify OTP</button>
+                    </div>
+                    {otpVerified && <div style={{ marginTop: 8, color: '#27ae60', fontWeight: 700 }}>OTP verified</div>}
+                  </div>
+                )}
+                {/* Removed Category, Max Uses, and date fields per request */}
               </>
             )}
 
             {step === 1 && (
               <>
-                <div className="form-title">Coupon Details</div>
-                <div className="form-subtitle">Configure the coupon value and code.</div>
+                <div className="form-title">Payment</div>
+                <div className="form-subtitle">Complete payment to enable coupon generation.</div>
                 <div className="form-group">
-                  <label className="form-label">Coupon Code</label>
-                  <input className="neu-input" placeholder="e.g. SUMMER25" value={form.code} onChange={e => set('code', e.target.value.toUpperCase())} style={{ fontFamily: 'monospace', letterSpacing: 2, fontWeight: 700 }} />
-                </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Discount (%)</label>
-                    <input className="neu-input" type="number" placeholder="e.g. 25" value={form.discount} onChange={e => set('discount', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Discount Type</label>
-                    <select className="neu-input">
-                      <option>Percentage</option>
-                      <option>Fixed Amount</option>
-                      <option>Free Shipping</option>
-                    </select>
-                  </div>
+                  <label className="form-label">Name on Card</label>
+                  <input className="neu-input" placeholder="Name on card" value={card.nameOnCard} onChange={e => setCard(c => ({ ...c, nameOnCard: e.target.value }))} />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Description</label>
-                  <textarea className="neu-input" rows={4} placeholder="Describe what this coupon offers..." value={form.description} onChange={e => set('description', e.target.value)} style={{ resize: 'vertical' }} />
+                  <label className="form-label">Card Number</label>
+                  <input className="neu-input" placeholder="4242 4242 4242 4242" value={card.number} onChange={e => setCard(c => ({ ...c, number: e.target.value }))} />
+                </div>
+                <div style={{ marginTop: 12 }}>
+                  <button className="neu-btn neu-btn-primary" onClick={() => setPaymentDone(true)}>Pay & Continue</button>
+                  {paymentDone && <div style={{ marginTop: 10, color: '#27ae60', fontWeight: 700 }}>Payment successful (demo)</div>}
                 </div>
               </>
             )}
@@ -106,11 +122,11 @@ export default function GenerateCoupon() {
                 <div style={{ background: 'var(--bg)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-in)', padding: 24, marginBottom: 24 }}>
                   {[
                     ['Campaign Name', form.name || '—'],
-                    ['Category', form.category || '—'],
+                    ['Email', form.email || '—'],
                     ['Coupon Code', form.code || '—'],
                     ['Discount', form.discount ? `${form.discount}%` : '—'],
-                    ['Max Uses', form.maxUses || '—'],
-                    ['Valid Period', form.startDate && form.endDate ? `${form.startDate} → ${form.endDate}` : '—'],
+                    ['Payment', paymentDone ? 'Completed' : 'Pending'],
+                    ['OTP', otpVerified ? 'Verified' : 'Not Verified'],
                   ].map(([k, v]) => (
                     <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(0,0,0,0.05)', fontSize: 14 }}>
                       <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{k}</span>
@@ -128,15 +144,40 @@ export default function GenerateCoupon() {
                 : <div />
               }
               {step < steps.length - 1
-                ? <button className="neu-btn neu-btn-primary" onClick={() => setStep(s => s + 1)} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>Next <ChevronRight size={16} /></button>
-                : <button className="neu-btn neu-btn-primary" onClick={handleGenerate} style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Ticket size={16} /> Generate Coupon</button>
+                ? <button className="neu-btn neu-btn-primary" onClick={() => {
+                    if (step === 0 && !otpVerified) return alert('Please verify OTP before continuing')
+                    setStep(s => s + 1)
+                  }} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>Next <ChevronRight size={16} /></button>
+                : <button className="neu-btn neu-btn-primary" onClick={() => {
+                    if (!otpVerified) return alert('OTP not verified')
+                    if (!paymentDone) return alert('Payment not completed')
+                    handleGenerate()
+                  }} style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Ticket size={16} /> Generate Coupon</button>
               }
             </div>
           </div>
         </div>
       </section>
 
-      {showQR && <QRModal couponCode={form.code || 'FCFC-2025-XKQP'} onClose={handleQRClose} />}
+      {generatedCode && (
+        <section className="section">
+          <div className="page-wrapper">
+            <div className="form-card">
+              <div style={{ textAlign: 'center' }}>
+                <h3 style={{ fontSize: 20, fontWeight: 800, color: 'var(--navy)' }}>Coupon Generated</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: 16 }}>Your coupon has been generated successfully.</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'var(--bg)', padding: '12px 18px', borderRadius: 12, boxShadow: 'var(--shadow-in)' }}>
+                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: 'var(--navy)', fontSize: 18 }}>{generatedCode}</span>
+                  <button className="neu-btn" onClick={() => copyCode(generatedCode)} style={{ padding: '8px 12px' }}>Copy</button>
+                </div>
+                <div style={{ marginTop: 18 }}>
+                  <button className="neu-btn neu-btn-primary" onClick={() => navigate('/thank-you')}>Finish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   )
 }

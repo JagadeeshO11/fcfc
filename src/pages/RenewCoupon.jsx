@@ -2,14 +2,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RefreshCw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
-import QRModal from '../components/QRModal'
 import './RenewCoupon.css'
 
 const steps = ['Find Coupon', 'New Validity', 'Confirm Renewal']
 
 export default function RenewCoupon() {
   const [step, setStep] = useState(0)
-  const [showQR, setShowQR] = useState(false)
+  const [renewDone, setRenewDone] = useState(false)
   const [form, setForm] = useState({ code: '', wallet: '', newEnd: '', reason: '' })
   const navigate = useNavigate()
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
@@ -109,14 +108,35 @@ export default function RenewCoupon() {
               }
               {step < steps.length - 1
                 ? <button className="neu-btn neu-btn-primary" onClick={() => setStep(s => s + 1)} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>Next <ChevronRight size={16} /></button>
-                : <button className="neu-btn neu-btn-primary" onClick={() => setShowQR(true)} style={{ display: 'flex', alignItems: 'center', gap: 8 }}><RefreshCw size={16} /> Renew Coupon</button>
+                : <button className="neu-btn neu-btn-primary" onClick={() => {
+                    setRenewDone(true)
+                    try {
+                      const renewals = JSON.parse(localStorage.getItem('renewedCoupons') || '[]')
+                      renewals.unshift({ code: form.code, wallet: form.wallet, newEnd: form.newEnd, reason: form.reason, createdAt: new Date().toISOString() })
+                      localStorage.setItem('renewedCoupons', JSON.stringify(renewals.slice(0, 500)))
+                    } catch (e) {
+                      // ignore storage issues
+                    }
+                  }} style={{ display: 'flex', alignItems: 'center', gap: 8 }}><RefreshCw size={16} /> Renew Coupon</button>
               }
             </div>
           </div>
         </div>
       </section>
 
-      {showQR && <QRModal couponCode={form.code || 'FCFC-RNW-0001'} onClose={() => { setShowQR(false); navigate('/thank-you') }} />}
+      {renewDone && (
+        <section className="section">
+          <div className="page-wrapper">
+            <div className="form-card">
+              <div className="form-title">Renewal Requested</div>
+              <div className="form-subtitle">Your renewal request has been recorded. It may take a few moments to process.</div>
+              <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
+                <button className="neu-btn neu-btn-primary" onClick={() => navigate('/thank-you')}>Finish</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   )
 }
