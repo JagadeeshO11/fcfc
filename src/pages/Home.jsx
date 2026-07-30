@@ -134,7 +134,7 @@ export default function Home() {
     <main>
 
       {/* ══ HERO ══ */}
-      <section className="hero-col-section">
+      <section className="hero-col-section" style={{ '--hero-img': `url(${heroImage})` }}>
         <div className="hero-col-inner page-wrapper">
 
           {/* Left — content */}

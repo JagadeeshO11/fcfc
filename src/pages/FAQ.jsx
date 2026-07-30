@@ -1,6 +1,9 @@
 import { useState } from 'react'
-import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react'
+import { ChevronDown, HelpCircle, MessageCircle, Play } from 'lucide-react'
 import faqVideo from '../assets/faq-video.mp4'
+import heroVideo from '../assets/hero-video.mp4'
+import couponArbitrageVideo from '../assets/coupon-arbitrage.mp4'
+import noDollarVideo from '../assets/no-dollar-coupon.mp4'
 import './FAQ.css'
 
 const faqs = [
@@ -68,6 +71,14 @@ export default function FAQ() {
           </div>
           <h1>Frequently Asked Questions</h1>
           <p>Everything you need to know about FCFC and coupon campaigns.</p>
+          <div className="faq-hero-stats">
+            {[['50+', 'Questions Answered'], ['24/7', 'Support Available'], ['38K+', 'Community Members'], ['4', 'Categories']].map(([n, l]) => (
+              <div key={l} className="faq-hero-stat">
+                <div className="faq-hero-stat-num">{n}</div>
+                <div className="faq-hero-stat-label">{l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -119,6 +130,39 @@ export default function FAQ() {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ══ VIDEO GALLERY ══ */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="page-wrapper">
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            <div className="workflow-eyebrow" style={{ marginBottom: 14 }}>
+              <Play size={13} /> Tutorial Videos
+            </div>
+            <h2 className="section-title">Learn With Video Guides</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Step-by-step video walkthroughs covering every aspect of the FCFC platform.
+            </p>
+          </div>
+          <div className="faq-video-grid">
+            {[
+              { src: faqVideo,             title: 'FCFC Platform Overview',          desc: 'A complete walkthrough of the Fortune Crowd Fund Coupon platform and how it works.' },
+              { src: heroVideo,            title: 'How the FCFC Cycle Works',        desc: 'See the full Buy → Transfer → Redeem → Multiply cycle in action on-chain.' },
+              { src: couponArbitrageVideo, title: 'Coupon Arbitrage Workflow',       desc: 'Detailed breakdown of the coupon arbitrage workflow and how value is distributed.' },
+              { src: noDollarVideo,        title: 'Coupon Display & Redemption',     desc: 'How coupons are displayed, redeemed, and verified without exposing dollar values.' },
+            ].map(v => (
+              <div key={v.title} className="faq-video-card">
+                <div className="faq-video-wrap">
+                  <video src={v.src} controls muted playsInline preload="metadata" />
+                </div>
+                <div className="faq-video-info">
+                  <div className="faq-video-title">{v.title}</div>
+                  <div className="faq-video-desc">{v.desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

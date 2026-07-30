@@ -31,6 +31,9 @@
     border-radius: var(--radius-sm);
     transition: color 0.2s;
     flex: 1;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    user-select: none;
   }
 
   .bottom-nav-item.active {

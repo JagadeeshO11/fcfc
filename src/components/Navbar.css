@@ -126,6 +126,8 @@
   color: var(--navy);
 }
 
+.nav-cta { text-decoration: none !important; }
+
 @media (max-width: 768px) {
   .nav-links { display: none !important; }
   .nav-cta   { display: none !important; }

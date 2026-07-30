@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { ChevronDown, Ticket, RefreshCw, Search, Send } from 'lucide-react'
+import { ChevronDown, Ticket, RefreshCw, Search, Send, ExternalLink } from 'lucide-react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 
@@ -37,6 +37,8 @@ export default function Navbar() {
           <li><NavLink to="/" end>Home</NavLink></li>
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/faq">FAQ</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
+          <li><NavLink to="/links">Links</NavLink></li>
 
           {/* Coupon Dropdown */}
           <li className="dropdown" ref={dropRef}>
@@ -60,7 +62,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link to="/coupon/generate" className="neu-btn neu-btn-primary nav-cta">
-          <Ticket size={15} /> Get FCFC
+          <Ticket size={15} /> Start Campaign
         </Link>
       </div>
     </nav>

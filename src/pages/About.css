@@ -1,3 +1,23 @@
+/* ── About Header Stats ── */
+.about-header-stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.about-header-stat {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius);
+  padding: 12px 24px;
+  text-align: center;
+  min-width: 100px;
+}
+.about-header-stat-num   { font-size: 24px; font-weight: 800; color: #fff; }
+.about-header-stat-label { font-size: 11px; color: rgba(255,255,255,0.65); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
 /* ── About Grid ── */
 .about-grid {
   display: grid;

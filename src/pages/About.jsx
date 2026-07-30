@@ -1,5 +1,6 @@
 import { Shield, Zap, Globe, Users, Award, Target, MapPin, Briefcase, Star } from 'lucide-react'
 import logo from '../assets/logo.png'
+import ceoImg from '../assets/ceo.png'
 import './About.css'
 
 const values = [
@@ -17,6 +18,14 @@ export default function About() {
       <div className="page-header">
         <h1>About FCFC</h1>
         <p>Fortune Crowd Fund Coupon — the next-generation community coupon platform powered by blockchain.</p>
+        <div className="about-header-stats">
+          {[['2023', 'Founded'], ['38K+', 'Active Members'], ['$2.4M', 'Value Cycled'], ['150+', 'Countries']].map(([n, l]) => (
+            <div key={l} className="about-header-stat">
+              <div className="about-header-stat-num">{n}</div>
+              <div className="about-header-stat-label">{l}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* ── Story ── */}
@@ -77,7 +86,7 @@ export default function About() {
 
           <div className="ceo-card">
             <div className="ceo-avatar">
-              <span>JK</span>
+              <img src={ceoImg} alt="Mr. James Knight" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 28 }} />
             </div>
             <div className="ceo-info">
               <div className="ceo-name">Mr. James Knight</div>
