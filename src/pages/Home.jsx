@@ -20,7 +20,7 @@ const stats = [
 const flowSteps = [
   {
     num: 1, emoji: '💳', title: 'Generate Coupon',
-    desc: 'Purchase a $50 Fortune Crowd Fund Coupon, verified on-chain with a unique QR code.',
+    desc: 'Purchase a $50 Fortune Crowd Fund Coupon, verified on-chain with a unique coupon code.',
     amount: '$50', color: '#4A90D9', bg: 'rgba(74,144,217,0.12)'
   },
   {
@@ -74,7 +74,7 @@ const flowSteps = [
 const timelineSteps = [
   {
     emoji: '💳', step: 'Step 01', title: 'Generate Coupon',
-    desc: 'A $50 FCFC — Fortune Crowd Fund Coupon — is generated and verified on-chain instantly with a unique QR code and wallet signature.',
+    desc: 'A $50 FCFC — Fortune Crowd Fund Coupon — is generated and verified on-chain instantly with a unique coupon code and wallet signature.',
     color: '#4A90D9'
   },
   {
@@ -93,8 +93,8 @@ const features = [
   { icon: <Zap size={24} />,     title: 'Instant FCFC Minting',        desc: 'Every Fortune Crowd Fund Coupon is minted as a blockchain asset in seconds — tamper-proof and instantly transferable to any wallet.',  color: '#4A90D9' },
   { icon: <Shield size={24} />,  title: 'Zero Fraud Guarantee',         desc: 'Cryptographic signatures make FCFC duplication impossible. Every Fortune Crowd Fund Coupon redemption is verified on-chain.',           color: '#6C63FF' },
   { icon: <Network size={24} />, title: 'FCFC Crowd Distribution',      desc: 'Each FCFC redemption spawns 3 new Fortune Crowd Fund Coupons, creating an exponential crowd effect that rewards every member.',          color: '#27ae60' },
-  { icon: <Wallet size={24} />,  title: 'Multi-Wallet Support',         desc: 'Connect MetaMask, WalletConnect, Coinbase Wallet or pay by card. Full flexibility for every FCFC community member.',                    color: '#e67e22' },
-  { icon: <QrCode size={24} />,  title: 'Instant QR Generation',        desc: 'Every Fortune Crowd Fund Coupon gets a unique QR code for fast scanning and redemption at any participating merchant.',                   color: '#9b59b6' },
+  { icon: <Wallet size={24} />,  title: 'Multi-Gateway Payments',       desc: 'Connect MetaMask, WalletConnect, Coinbase Wallet or pay by card through multiple payment gateways. Full flexibility for every FCFC community member.',                    color: '#e67e22' },
+  { icon: <QrCode size={24} />,  title: 'Instant Coupon Code',        desc: 'Every Fortune Crowd Fund Coupon gets a unique coupon code for fast redemption at any participating merchant.',                   color: '#9b59b6' },
   { icon: <Globe size={24} />,   title: 'Global 150+ Countries',        desc: 'Deploy FCFC campaigns worldwide with multi-currency support and localised Fortune Crowd Fund Coupon redemption infrastructure.',          color: '#e74c3c' },
 ]
 
