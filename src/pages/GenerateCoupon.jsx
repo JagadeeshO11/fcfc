@@ -4,14 +4,11 @@ import { Ticket, ChevronRight, ChevronLeft } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
 import './GenerateCoupon.css'
 
-const steps = ['Details & Verify', 'Payment', 'Review & Generate']
+const steps = ['Campaign Details', 'Payment', 'Review & Generate']
 
 export default function GenerateCoupon() {
   const [step, setStep] = useState(0)
   const [form, setForm] = useState({ name: '', email: '', category: '', startDate: '', endDate: '', discount: '', maxUses: '', code: '', description: '' })
-  const [otpSentCode, setOtpSentCode] = useState('')
-  const [otpInput, setOtpInput] = useState('')
-  const [otpVerified, setOtpVerified] = useState(false)
   const [paymentDone, setPaymentDone] = useState(false)
   const [card, setCard] = useState({ nameOnCard: '', number: '' })
   const [generatedCode, setGeneratedCode] = useState('')
@@ -65,7 +62,7 @@ export default function GenerateCoupon() {
             {step === 0 && (
               <>
                 <div className="form-title">Campaign Information</div>
-                <div className="form-subtitle">Enter your details and verify via OTP.</div>
+                <div className="form-subtitle">Enter your campaign details to generate a coupon.</div>
                 <div className="form-group">
                   <label className="form-label">Campaign Name</label>
                   <input className="neu-input" placeholder="e.g. Summer Mega Sale 2025" value={form.name} onChange={e => set('name', e.target.value)} />
@@ -74,25 +71,7 @@ export default function GenerateCoupon() {
                   <label className="form-label">Email</label>
                   <input className="neu-input" placeholder="you@example.com" value={form.email} onChange={e => set('email', e.target.value)} />
                 </div>
-                <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 8 }}>
-                  <button className="neu-btn" onClick={() => {
-                    const code = Math.floor(100000 + Math.random() * 900000).toString()
-                    setOtpSentCode(code)
-                    setOtpVerified(false)
-                  }}>Send OTP</button>
-                  <div style={{ color: 'var(--text-muted)', fontSize: 13 }}>OTP will be displayed here for demo purposes.</div>
-                </div>
-                {otpSentCode && (
-                  <div style={{ marginTop: 12 }}>
-                    <div style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 6 }}>Enter OTP (demo code: <strong style={{ color: 'var(--navy)' }}>{otpSentCode}</strong>)</div>
-                    <div style={{ display: 'flex', gap: 8 }}>
-                      <input className="neu-input" placeholder="123456" value={otpInput} onChange={e => setOtpInput(e.target.value)} />
-                      <button className="neu-btn" onClick={() => setOtpVerified(otpInput === otpSentCode)}>Verify OTP</button>
-                    </div>
-                    {otpVerified && <div style={{ marginTop: 8, color: '#27ae60', fontWeight: 700 }}>OTP verified</div>}
-                  </div>
-                )}
-                {/* Removed Category, Max Uses, and date fields per request */}
+                {/* Removed OTP feature and validation per request */}
               </>
             )}
 
@@ -118,7 +97,7 @@ export default function GenerateCoupon() {
             {step === 2 && (
               <>
                 <div className="form-title">Review & Generate</div>
-                <div className="form-subtitle">Confirm your coupon details before minting on-chain.</div>
+                <div className="form-subtitle">Confirm your coupon details before generating.</div>
                 <div style={{ background: 'var(--bg)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-in)', padding: 24, marginBottom: 24 }}>
                   {[
                     ['Campaign Name', form.name || '—'],
@@ -126,7 +105,6 @@ export default function GenerateCoupon() {
                     ['Coupon Code', form.code || '—'],
                     ['Discount', form.discount ? `${form.discount}%` : '—'],
                     ['Payment', paymentDone ? 'Completed' : 'Pending'],
-                    ['OTP', otpVerified ? 'Verified' : 'Not Verified'],
                   ].map(([k, v]) => (
                     <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(0,0,0,0.05)', fontSize: 14 }}>
                       <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{k}</span>
@@ -144,12 +122,8 @@ export default function GenerateCoupon() {
                 : <div />
               }
               {step < steps.length - 1
-                ? <button className="neu-btn neu-btn-primary" onClick={() => {
-                    if (step === 0 && !otpVerified) return alert('Please verify OTP before continuing')
-                    setStep(s => s + 1)
-                  }} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>Next <ChevronRight size={16} /></button>
+                ? <button className="neu-btn neu-btn-primary" onClick={() => setStep(s => s + 1)} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>Next <ChevronRight size={16} /></button>
                 : <button className="neu-btn neu-btn-primary" onClick={() => {
-                    if (!otpVerified) return alert('OTP not verified')
                     if (!paymentDone) return alert('Payment not completed')
                     handleGenerate()
                   }} style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Ticket size={16} /> Generate Coupon</button>
