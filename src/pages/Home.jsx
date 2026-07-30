@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Ticket, Users, TrendingUp, Shield, Zap, Globe,
-  ArrowRight, Star, CheckCircle, Volume2, VolumeX,
+  ArrowRight, Star, CheckCircle,
   ArrowRightCircle, DollarSign, RefreshCw, GitMerge,
   Wallet, QrCode, Network
 } from 'lucide-react'
 import heroVideo from '../assets/hero-video.mp4'
+import heroImage from '../assets/image.png'
 import './Home.css'
 
 const stats = [
@@ -129,62 +130,56 @@ function AnimatedNumber({ target }) {
 }
 
 export default function Home() {
-  const videoRef = useRef(null)
-  const [muted, setMuted] = useState(true)
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted
-      setMuted(videoRef.current.muted)
-    }
-  }
-
   return (
     <main>
 
       {/* ══ HERO ══ */}
-      <section className="hero-video-section">
-        <video ref={videoRef} className="hero-video-bg" src={heroVideo} autoPlay muted loop playsInline />
-        <div className="hero-video-overlay" />
+      <section className="hero-col-section">
+        <div className="hero-col-inner page-wrapper">
 
-        <div className="hero-video-content page-wrapper">
-          <div className="hero-badge-glass">
-            <Star size={13} fill="currentColor" />
-            <span>FCFC — Fortune Crowd Fund Coupon</span>
+          {/* Left — content */}
+          <div className="hero-col-content">
+            <div className="hero-badge-glass">
+              <Star size={13} fill="currentColor" />
+              <span>FCFC — Fortune Crowd Fund Coupon</span>
+            </div>
+
+            <h1 className="hero-col-title">
+              Buy. Transfer. Redeem.<br />
+              <span className="highlight">Multiply Your Coupons</span><br />
+              On-Chain.
+            </h1>
+
+            <p className="hero-col-sub">
+              FCFC — Fortune Crowd Fund Coupon. User A buys a $50 coupon → transfers to User B → User B redeems + pays $20 → gets 3 new FCFCs → splits to grow the crowd. Fully on-chain. Zero fraud.
+            </p>
+
+            <div className="hero-actions">
+              <Link to="/coupon/generate" className="hero-btn-primary">
+                <Ticket size={17} /> Get Your FCFC
+              </Link>
+              <Link to="/coupon/submit" className="hero-btn-ghost-dark">
+                Redeem Now <ArrowRight size={15} />
+              </Link>
+            </div>
+
+            <div className="hero-chips">
+              {['$50 FCFC Coupon', '+$20 = 3 FCFCs', 'Crowd Transfer', 'Zero Fraud'].map(t => (
+                <div key={t} className="chip-dark">
+                  <CheckCircle size={12} color="#4ade80" /> {t}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <h1 className="hero-video-title">
-            Buy. Transfer. Redeem.<br />
-            <span className="highlight">Multiply Your Coupons</span><br />
-            On-Chain.
-          </h1>
-
-          <p className="hero-video-sub">
-            FCFC — Fortune Crowd Fund Coupon. User A buys a $50 coupon → transfers to User B → User B redeems + pays $20 → gets 3 new FCFCs → splits to grow the crowd. Fully on-chain. Zero fraud.
-          </p>
-
-          <div className="hero-actions" style={{ justifyContent: 'center' }}>
-            <Link to="/coupon/generate" className="hero-btn-primary">
-              <Ticket size={17} /> Get Your FCFC
-            </Link>
-            <Link to="/coupon/submit" className="hero-btn-ghost">
-              Redeem Now <ArrowRight size={15} />
-            </Link>
+          {/* Right — image */}
+          <div className="hero-col-image">
+            <div className="hero-img-wrap">
+              <img src={heroImage} alt="FCFC Hero" className="hero-img" />
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap', justifyContent: 'center' }}>
-            {['$50 FCFC Coupon', '+$20 = 3 FCFCs', 'Crowd Transfer', 'Zero Fraud'].map(t => (
-              <div key={t} className="chip-glass">
-                <CheckCircle size={12} color="#4ade80" /> {t}
-              </div>
-            ))}
-          </div>
         </div>
-
-        <button className="hero-mute-btn" onClick={toggleMute} title={muted ? 'Unmute' : 'Mute'}>
-          {muted ? <VolumeX size={17} /> : <Volume2 size={17} />}
-        </button>
-        <div className="hero-scroll-indicator"><div className="hero-scroll-dot" /></div>
       </section>
 
       {/* ══ STATS ══ */}
