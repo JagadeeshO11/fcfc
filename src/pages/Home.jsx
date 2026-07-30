@@ -139,7 +139,7 @@ export default function Home() {
 
           {/* Left — content */}
           <div className="hero-col-content">
-            <div className="hero-badge-glass">
+            <div className="hero-badge-glass" style={{ color: '#38bdf8' }}>
               <Star size={13} fill="currentColor" />
               <span>FCFC — Fortune Crowd Fund Coupon</span>
             </div>
