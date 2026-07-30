@@ -564,6 +564,7 @@
     box-shadow: none !important;
     border: none !important;
     transform: none;
+    order: -1;
   }
   .hero-img-wrap {
     width: 100%;

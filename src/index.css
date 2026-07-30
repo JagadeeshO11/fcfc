@@ -24,6 +24,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  padding-top: 72px;
 }
 
 /* ── Scrollbar ── */
@@ -98,12 +99,17 @@ body {
 
 /* ── Navbar ── */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
   background: var(--bg);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   padding: 0 24px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .navbar-inner {
