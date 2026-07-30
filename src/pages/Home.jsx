@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Ticket, Users, TrendingUp, Shield, Zap, Globe,
@@ -215,8 +215,8 @@ export default function Home() {
           {/* Flow diagram */}
           <div className="workflow-flow">
             {flowSteps.map((s, i) => (
-              <>
-                <div key={s.num} className="flow-step">
+              <Fragment key={s.num}>
+                <div className="flow-step">
                   <div className="flow-step-num">{s.num}</div>
                   <div className="flow-step-icon" style={{ background: s.bg }}>
                     <span style={{ fontSize: 28 }}>{s.emoji}</span>
@@ -226,11 +226,11 @@ export default function Home() {
                   <span className="flow-step-amount">{s.amount}</span>
                 </div>
                 {i < flowSteps.length - 1 && (
-                  <div key={`arrow-${i}`} className="flow-arrow">
+                  <div className="flow-arrow">
                     <ArrowRightCircle size={28} />
                   </div>
                 )}
-              </>
+              </Fragment>
             ))}
           </div>
 
