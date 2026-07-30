@@ -128,7 +128,32 @@
 
 .nav-cta { text-decoration: none !important; }
 
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  background: var(--bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-out);
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--navy);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.mobile-link.active {
+  background: var(--bg);
+  box-shadow: var(--shadow-out);
+  color: var(--navy);
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
-  .nav-links { display: none !important; }
-  .nav-cta   { display: none !important; }
+  .nav-links    { display: none !important; }
+  .nav-cta      { display: none !important; }
+  .nav-hamburger { display: flex !important; }
 }

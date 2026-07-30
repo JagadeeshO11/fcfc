@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Info, HelpCircle, Ticket, Mail } from 'lucide-react'
+import { Home, Info, HelpCircle, Ticket, Mail, ExternalLink } from 'lucide-react'
 import './BottomNav.css'
 
 const items = [
-  { label: 'Home',    path: '/',               icon: <Home size={22} /> },
-  { label: 'Coupon',  path: '/coupon/generate', icon: <Ticket size={22} /> },
-  { label: 'About',   path: '/about',           icon: <Info size={22} /> },
-  { label: 'FAQ',     path: '/faq',             icon: <HelpCircle size={22} /> },
-  { label: 'Contact', path: '/contact',         icon: <Mail size={22} /> },
+  { label: 'Home',    path: '/',               icon: <Home size={20} /> },
+  { label: 'Coupon',  path: '/coupon/generate', icon: <Ticket size={20} /> },
+  { label: 'About',   path: '/about',           icon: <Info size={20} /> },
+  { label: 'FAQ',     path: '/faq',             icon: <HelpCircle size={20} /> },
+  { label: 'Contact', path: '/contact',         icon: <Mail size={20} /> },
+  { label: 'Links',   path: '/links',           icon: <ExternalLink size={20} /> },
 ]
 
 export default function BottomNav() {

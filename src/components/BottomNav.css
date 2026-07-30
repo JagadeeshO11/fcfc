@@ -1,7 +1,5 @@
 /* ── Bottom Nav — mobile only ── */
-.bottom-nav {
-  display: none;
-}
+.bottom-nav { display: none; }
 
 @media (max-width: 768px) {
   .bottom-nav {
@@ -13,40 +11,45 @@
     z-index: 200;
     background: var(--bg);
     box-shadow: 0 -4px 20px rgba(0,0,0,0.10);
-    padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
     justify-content: space-around;
     align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .bottom-nav::-webkit-scrollbar { display: none; }
 
   .bottom-nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     text-decoration: none;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-    padding: 6px 14px;
+    padding: 4px 10px;
     border-radius: var(--radius-sm);
     transition: color 0.2s;
-    flex: 1;
+    flex-shrink: 0;
+    min-width: 52px;
+    /* remove blue tap highlight */
     -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
     outline: none;
     user-select: none;
   }
 
-  .bottom-nav-item.active {
-    color: var(--navy);
-  }
+  .bottom-nav-item.active { color: var(--navy); }
 
   .bottom-nav-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
     transition: background 0.2s, box-shadow 0.2s;
   }
 
@@ -57,18 +60,11 @@
   }
 
   .bottom-nav-label {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.2px;
   }
 
-  /* push page content above bottom nav */
-  main {
-    padding-bottom: 80px;
-  }
-
-  /* hide footer on mobile — bottom nav replaces it */
-  .footer {
-    display: none;
-  }
+  main { padding-bottom: 80px; }
+  .footer { display: none; }
 }

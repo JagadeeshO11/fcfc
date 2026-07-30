@@ -12,6 +12,7 @@ import RenewCoupon from './pages/RenewCoupon'
 import SearchCoupon from './pages/SearchCoupon'
 import ThankYou from './pages/ThankYou'
 import Contact from './pages/Contact'
+import Links from './pages/Links'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/links" element={<Links />} />
         <Route path="/coupon/generate" element={<GenerateCoupon />} />
         <Route path="/coupon/submit" element={<SubmitCoupon />} />
         <Route path="/coupon/renew" element={<RenewCoupon />} />
