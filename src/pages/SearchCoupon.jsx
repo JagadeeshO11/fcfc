@@ -19,15 +19,10 @@ const statusConfig = {
 
 export default function SearchCoupon() {
   const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('All')
-  const [status, setStatus] = useState('All')
   const [searched, setSearched] = useState(false)
 
   const results = mockResults.filter(r => {
-    const matchQ = !query || r.code.includes(query.toUpperCase()) || r.name.toLowerCase().includes(query.toLowerCase())
-    const matchC = category === 'All' || r.category === category
-    const matchS = status === 'All' || r.status === status
-    return matchQ && matchC && matchS
+    return !query || r.code.includes(query.toUpperCase()) || r.name.toLowerCase().includes(query.toLowerCase())
   })
 
   return (
@@ -53,17 +48,7 @@ export default function SearchCoupon() {
                   style={{ paddingLeft: 48, fontSize: 15 }}
                 />
               </div>
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Filter size={14} color="var(--text-muted)" />
-                  <span style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 600 }}>Filters:</span>
-                </div>
-                <select className="neu-input" style={{ width: 'auto', padding: '8px 14px', fontSize: 13 }} value={category} onChange={e => setCategory(e.target.value)}>
-                  {['All', 'Retail', 'Food', 'Travel', 'Tech', 'Health', 'Entertainment'].map(c => <option key={c}>{c}</option>)}
-                </select>
-                <select className="neu-input" style={{ width: 'auto', padding: '8px 14px', fontSize: 13 }} value={status} onChange={e => setStatus(e.target.value)}>
-                  {['All', 'active', 'expiring', 'expired'].map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
-                </select>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                 <button className="neu-btn neu-btn-primary" onClick={() => setSearched(true)} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 20px', fontSize: 13, marginLeft: 'auto' }}>
                   <Search size={14} /> Search
                 </button>

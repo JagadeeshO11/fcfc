@@ -4,12 +4,12 @@ import { RefreshCw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
 import './RenewCoupon.css'
 
-const steps = ['Find Coupon', 'New Validity', 'Confirm Renewal']
+const steps = ['Find Coupon', 'Confirm Renewal']
 
 export default function RenewCoupon() {
   const [step, setStep] = useState(0)
   const [renewDone, setRenewDone] = useState(false)
-  const [form, setForm] = useState({ code: '', wallet: '', newEnd: '', reason: '' })
+  const [form, setForm] = useState({ code: '', email: '', newEnd: '', reason: '' })
   const navigate = useNavigate()
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
@@ -36,8 +36,8 @@ export default function RenewCoupon() {
                   <input className="neu-input" placeholder="e.g. SUMMER25" value={form.code} onChange={e => set('code', e.target.value.toUpperCase())} style={{ fontFamily: 'monospace', letterSpacing: 3, fontWeight: 700, fontSize: 18, textAlign: 'center' }} />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Wallet Address (Owner)</label>
-                  <input className="neu-input" placeholder="0x..." value={form.wallet} onChange={e => set('wallet', e.target.value)} style={{ fontFamily: 'monospace' }} />
+                  <label className="form-label">Email Address</label>
+                  <input className="neu-input" type="email" placeholder="you@example.com" value={form.email} onChange={e => set('email', e.target.value)} style={{ fontFamily: 'monospace' }} />
                 </div>
 
                 {mockCoupon && (
@@ -57,41 +57,14 @@ export default function RenewCoupon() {
               </>
             )}
 
-            {step === 1 && (
-              <>
-                <div className="form-title">Set New Validity</div>
-                <div className="form-subtitle">Choose the new expiry date and renewal reason.</div>
-                <div className="form-group">
-                  <label className="form-label">New Expiry Date</label>
-                  <div style={{ position: 'relative' }}>
-                    <input className="neu-input" type="date" value={form.newEnd} onChange={e => set('newEnd', e.target.value)} />
-                    <Calendar size={16} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Renewal Reason</label>
-                  <select className="neu-input" value={form.reason} onChange={e => set('reason', e.target.value)}>
-                    <option value="">Select reason</option>
-                    <option>Coupon Extension</option>
-                    <option>Low Redemption Rate</option>
-                    <option>Seasonal Promotion</option>
-                    <option>Partner Request</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div style={{ background: 'rgba(74,144,217,0.08)', borderRadius: 'var(--radius-sm)', padding: 16, fontSize: 13, color: 'var(--navy)', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                  <RefreshCw size={16} style={{ flexShrink: 0, marginTop: 1 }} />
-                  <span>Renewal extends the coupon validity on-chain. A small gas fee may apply depending on network conditions.</span>
-                </div>
-              </>
-            )}
+            {/* Removed New Validity step - streamlining renewal to find + confirm */}
 
-            {step === 2 && (
+            {step === 1 && (
               <>
                 <div className="form-title">Confirm Renewal</div>
                 <div className="form-subtitle">Review and confirm the renewal details.</div>
                 <div style={{ background: 'var(--bg)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-in)', padding: 24, marginBottom: 24 }}>
-                  {[['Coupon Code', form.code || '—'], ['New Expiry', form.newEnd || '—'], ['Reason', form.reason || '—'], ['Wallet', form.wallet ? `${form.wallet.slice(0, 10)}...` : '—']].map(([k, v]) => (
+                  {[['Coupon Code', form.code || '—'], ['Email', form.email || '—']].map(([k, v]) => (
                     <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid rgba(0,0,0,0.05)', fontSize: 14 }}>
                       <span style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{k}</span>
                       <span style={{ color: 'var(--navy)', fontWeight: 700 }}>{v}</span>
@@ -112,7 +85,7 @@ export default function RenewCoupon() {
                     setRenewDone(true)
                     try {
                       const renewals = JSON.parse(localStorage.getItem('renewedCoupons') || '[]')
-                      renewals.unshift({ code: form.code, wallet: form.wallet, newEnd: form.newEnd, reason: form.reason, createdAt: new Date().toISOString() })
+                      renewals.unshift({ code: form.code, email: form.email, newEnd: form.newEnd, reason: form.reason, createdAt: new Date().toISOString() })
                       localStorage.setItem('renewedCoupons', JSON.stringify(renewals.slice(0, 500)))
                     } catch (e) {
                       // ignore storage issues

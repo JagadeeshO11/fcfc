@@ -60,4 +60,12 @@
 @media (max-width: 768px) {
   .form-card  { padding: 24px 18px; }
   .form-row   { grid-template-columns: 1fr; }
+  .form-nav   { flex-direction: column; }
+  .form-nav .neu-btn { width: 100%; justify-content: center; }
+  .review-summary { padding: 18px 14px; }
+  .review-row {
+    flex-direction: column;
+    gap: 4px;
+    word-break: break-word;
+  }
 }

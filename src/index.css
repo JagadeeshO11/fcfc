@@ -19,12 +19,25 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   padding-top: 72px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
 }
 
 /* ── Scrollbar ── */
@@ -812,6 +825,66 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: calc(64px + env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .page-wrapper {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .neu-card,
+  .form-card,
+  .modal-box {
+    border-radius: 18px;
+    padding: 22px 18px;
+  }
+
+  .page-header,
+  .generate-header,
+  .submit-header,
+  .renew-header,
+  .search-header {
+    padding: 42px 18px;
+  }
+
+  .page-header h1,
+  .generate-header h1,
+  .submit-header h1,
+  .renew-header h1,
+  .search-header h1 {
+    font-size: clamp(26px, 8vw, 34px);
+    line-height: 1.15;
+  }
+
+  .page-header p,
+  .generate-header p,
+  .submit-header p,
+  .renew-header p,
+  .search-header p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 7vw, 32px);
+    line-height: 1.18;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .hero {
+    padding: 56px 0 48px;
+  }
+
   .hero-content { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
   .coupons-grid { grid-template-columns: 1fr; }
@@ -821,6 +894,75 @@ body {
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .links-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .stat-card,
+  .feature-card,
+  .coupon-card,
+  .link-card,
+  .team-card {
+    border-radius: 14px;
+  }
+
+  .stat-card {
+    padding: 22px 14px;
+  }
+
+  .stat-number {
+    font-size: 26px;
+  }
+
+  .hero-actions,
+  .form-nav,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions > *,
+  .form-nav > *,
+  .neu-btn,
+  .hero-btn-primary,
+  .hero-btn-ghost,
+  .hero-btn-ghost-dark {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .step-indicator {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .step {
+    min-width: max-content;
+  }
+
+  .step-label {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-wrapper {
+    padding: 0 14px;
+  }
+
+  .stats-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .neu-card,
+  .form-card,
+  .modal-box {
+    box-shadow: 5px 5px 14px #c8cdd8, -5px -5px 14px #ffffff;
+  }
 }
 
 /* ── Chip / Tag ── */

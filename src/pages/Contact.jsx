@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock } from 'lucide-react'
-import addressImg from '../assets/address.jpeg'
 import locationImg from '../assets/locations.jpeg'
 import './Contact.css'
 
@@ -59,7 +58,12 @@ export default function Contact() {
               {/* Address & Location images */}
               <div className="contact-img-grid">
                 <div className="contact-img-card">
-                  <img src={addressImg} alt="Office Address" />
+                  <div className="contact-address-text">
+                    <span>Fortune Crowd Fund,</span>
+                    <span>Near One Mart Super Store,</span>
+                    <span>Road Town,</span>
+                    <span>Corporate Service Centre, VG 1110, British Virgin</span>
+                  </div>
                   <div className="contact-img-label">
                     <MapPin size={13} color="var(--accent)" />
                     <span>Our Address</span>

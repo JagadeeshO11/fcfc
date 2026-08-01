@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { ChevronDown, Ticket, RefreshCw, Search, Send, Menu, X, ExternalLink } from 'lucide-react'
+import { ChevronDown, Ticket, RefreshCw, Search, Send, ExternalLink } from 'lucide-react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 
@@ -16,7 +16,6 @@ const mobileLinks = [
   { label: 'About Us',         path: '/about' },
   { label: 'FAQ',              path: '/faq' },
   { label: 'Contact',          path: '/contact' },
-  { label: 'Links',            path: '/links' },
   { label: 'Generate Coupon',  path: '/coupon/generate' },
   { label: 'Submit Coupon',    path: '/coupon/submit' },
   { label: 'Renew Coupon',     path: '/coupon/renew' },
@@ -24,8 +23,7 @@ const mobileLinks = [
 ]
 
 export default function Navbar() {
-  const [dropOpen, setDropOpen]   = useState(false)
-  const [menuOpen, setMenuOpen]   = useState(false)
+  const [dropOpen, setDropOpen] = useState(false)
   const dropRef = useRef(null)
 
   useEffect(() => {
@@ -35,9 +33,6 @@ export default function Navbar() {
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [])
-
-  // close mobile menu on route change
-  useEffect(() => { setMenuOpen(false) }, [])
 
   return (
     <nav className="navbar">
@@ -54,7 +49,6 @@ export default function Navbar() {
           <li><NavLink to="/about">About Us</NavLink></li>
           <li><NavLink to="/faq">FAQ</NavLink></li>
           <li><NavLink to="/contact">Contact</NavLink></li>
-          <li><NavLink to="/links">Links</NavLink></li>
 
           <li className="dropdown" ref={dropRef}>
             <div className="dropdown-toggle" onClick={() => setDropOpen(o => !o)}>
@@ -79,28 +73,7 @@ export default function Navbar() {
           <Ticket size={15} /> Generate Coupon
         </Link>
 
-        {/* Mobile hamburger */}
-        <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="mobile-menu">
-          {mobileLinks.map(l => (
-            <NavLink
-              key={l.path}
-              to={l.path}
-              end={l.path === '/'}
-              className={({ isActive }) => `mobile-link${isActive ? ' active' : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {l.label}
-            </NavLink>
-          ))}
-        </div>
-      )}
     </nav>
   )
 }

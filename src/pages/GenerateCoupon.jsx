@@ -64,8 +64,8 @@ export default function GenerateCoupon() {
                 <div className="form-title">Coupon Information</div>
                 <div className="form-subtitle">Enter your coupon details and generate a verified FCFC code.</div>
                 <div className="form-group">
-                  <label className="form-label">Coupon Name</label>
-                  <input className="neu-input" placeholder="e.g. Summer Mega Sale 2025" value={form.name} onChange={e => set('name', e.target.value)} />
+                  <label className="form-label">Your Name</label>
+                  <input className="neu-input" placeholder="Enter your name" value={form.name} onChange={e => set('name', e.target.value)} />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Email</label>

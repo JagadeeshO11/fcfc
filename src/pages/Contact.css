@@ -53,6 +53,19 @@
   object-fit: cover;
   display: block;
 }
+.contact-address-text {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(74,144,217,0.12), rgba(108,99,255,0.1));
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
 .contact-img-label {
   display: flex;
   align-items: center;

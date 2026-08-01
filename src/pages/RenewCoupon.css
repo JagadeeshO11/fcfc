@@ -78,4 +78,6 @@
 @media (max-width: 768px) {
   .form-card { padding: 24px 18px; }
   .form-row  { grid-template-columns: 1fr; }
+  .form-nav  { flex-direction: column; }
+  .form-nav .neu-btn { width: 100%; justify-content: center; }
 }

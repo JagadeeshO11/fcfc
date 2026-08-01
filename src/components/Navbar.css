@@ -170,11 +170,24 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     padding-top: env(safe-area-inset-top);
+    padding-left: 14px;
+    padding-right: 14px;
   }
+  .navbar-inner {
+    height: 64px;
+    gap: 12px;
+  }
+  .nav-logo img { height: 38px; }
+  .nav-logo-text { font-size: 17px; }
   body {
-    padding-top: calc(72px + env(safe-area-inset-top));
+    padding-top: calc(64px + env(safe-area-inset-top));
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
+  }
+  .mobile-menu {
+    margin: 0 -14px;
+    padding: 10px 14px 14px;
+    max-height: calc(100svh - 64px - env(safe-area-inset-top));
   }
   .nav-links  { display: none !important; }
   .nav-cta    { display: none !important; }

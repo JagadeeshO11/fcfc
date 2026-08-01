@@ -1,5 +1,9 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useRef, Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import gsap from 'gsap'
+import CountUpModule from 'react-countup'
+import { TypeAnimation } from 'react-type-animation'
 import {
   Ticket, Users, TrendingUp, Shield, Zap, Globe,
   ArrowRight, Star, CheckCircle,
@@ -9,6 +13,13 @@ import {
 import heroVideo from '../assets/hero-video.mp4'
 import heroImage from '../assets/image.png'
 import './Home.css'
+
+const CountUp = CountUpModule.default ?? CountUpModule
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+}
 
 const stats = [
   { icon: <Ticket size={22} />,     number: '124K+', label: 'Coupons Generated',  color: '#4A90D9' },
@@ -99,22 +110,40 @@ const features = [
 ]
 
 function AnimatedNumber({ target }) {
-  const [val, setVal] = useState(0)
-  useEffect(() => {
-    const num = parseInt(target.replace(/\D/g, ''))
-    let start = 0
-    const step = Math.ceil(num / 60)
-    const timer = setInterval(() => {
-      start += step
-      if (start >= num) { setVal(num); clearInterval(timer) }
-      else setVal(start)
-    }, 20)
-    return () => clearInterval(timer)
-  }, [target])
-  return <>{target.replace(/[\d]+/, val.toLocaleString())}</>
+  const value = Number(target.replace(/[^0-9.]/g, ''))
+  const prefix = target.startsWith('$') ? '$' : ''
+  const suffix = target.replace(/^\$?[\d.]+/, '')
+
+  return (
+    <>
+      {prefix}
+      <CountUp end={value} duration={2.2} decimals={target.includes('.') ? 1 : 0} enableScrollSpy scrollSpyOnce />
+      {suffix}
+    </>
+  )
 }
 
 export default function Home() {
+  const timelineVisualRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.tv-coupon', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' })
+      gsap.to('.tv-arrow-line', {
+        scaleX: 0.35,
+        transformOrigin: 'center',
+        repeat: -1,
+        yoyo: true,
+        duration: 1.2,
+        ease: 'sine.inOut',
+        stagger: 0.15,
+      })
+      gsap.fromTo('.tv-split-coupon', { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.12, delay: 0.25, ease: 'back.out(1.6)' })
+    }, timelineVisualRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <main>
 
@@ -123,14 +152,29 @@ export default function Home() {
         <div className="hero-col-inner page-wrapper">
 
           {/* Left — content */}
-          <div className="hero-col-content">
+          <motion.div
+            className="hero-col-content"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             <div className="hero-badge-glass" style={{ color: '#38bdf8' }}>
               <Star size={13} fill="currentColor" />
               <span>FCFC — Fortune Crowd Fund Coupon</span>
             </div>
 
             <h1 className="hero-col-title">
-              Self Crowd-Fund Through Coupon-Based Support.
+              <TypeAnimation
+                sequence={[
+                  'Self Crowd-Fund With Coupon Support.',
+                  1800,
+                  'Share Coupons. Grow Support. Fund Dreams.',
+                  1800,
+                ]}
+                speed={52}
+                repeat={Infinity}
+              />
             </h1>
 
             <p className="hero-col-sub">
@@ -155,14 +199,19 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right — image */}
-          <div className="hero-col-image">
+          <motion.div
+            className="hero-col-image"
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+          >
             <div className="hero-img-wrap">
               <img src={heroImage} alt="FCFC Hero" className="hero-img" />
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -171,14 +220,22 @@ export default function Home() {
       <section className="section" style={{ paddingTop: 64, paddingBottom: 64 }}>
         <div className="page-wrapper">
           <div className="stats-grid">
-            {stats.map(s => (
-              <div key={s.label} className="stat-card">
+            {stats.map((s, index) => (
+              <motion.div
+                key={s.label}
+                className="stat-card"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+              >
                 <div className="stat-icon" style={{ background: `${s.color}15` }}>
                   <span style={{ color: s.color }}>{s.icon}</span>
                 </div>
                 <div className="stat-number"><AnimatedNumber target={s.number} /></div>
                 <div className="stat-label">{s.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -201,7 +258,12 @@ export default function Home() {
           <div className="workflow-flow">
             {flowSteps.map((s, i) => (
               <Fragment key={s.num}>
-                <div className="flow-step">
+                <motion.div
+                  className="flow-step"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 100}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                >
                   <div className="flow-step-num">{s.num}</div>
                   <div className="flow-step-icon" style={{ background: s.bg }}>
                     <span style={{ fontSize: 28 }}>{s.emoji}</span>
@@ -209,7 +271,7 @@ export default function Home() {
                   <div className="flow-step-title">{s.title}</div>
                   <div className="flow-step-desc">{s.desc}</div>
                   <span className="flow-step-amount">{s.amount}</span>
-                </div>
+                </motion.div>
                 {i < flowSteps.length - 1 && (
                   <div className="flow-arrow">
                     <ArrowRightCircle size={28} />
@@ -259,7 +321,7 @@ export default function Home() {
               </p>
               <div className="timeline-list">
                 {timelineSteps.map(t => (
-                  <div key={t.step} className="timeline-item">
+                  <div key={t.step} className="timeline-item" data-aos="fade-right">
                     <div className="timeline-dot" style={{ background: `${t.color}18` }}>
                       <span style={{ fontSize: 18 }}>{t.emoji}</span>
                     </div>
@@ -274,7 +336,7 @@ export default function Home() {
             </div>
 
             {/* Right: visual card */}
-            <div className="timeline-visual">
+            <div className="timeline-visual" ref={timelineVisualRef} data-aos="zoom-in">
               <div className="tv-label">Live FCFC Transaction Preview</div>
 
               <div className="tv-coupon">
@@ -294,7 +356,7 @@ export default function Home() {
                 </div>
                 <div className="tv-arrow-wrap">
                   <div className="tv-arrow-line" />
-                  <div className="tv-arrow-amount">Submit</div>
+                  <div className="tv-arrow-amount">Submit $10</div>
                   <div className="tv-arrow-line" />
                 </div>
                 <div className="tv-user">
@@ -305,8 +367,18 @@ export default function Home() {
               </div>
 
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16, marginTop: 4 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)', marginBottom: 12 }}>
-                  Submit FCFC Coupon → Get 3 New FCFCs
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', marginBottom: 12 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)' }}>
+                    Submit $10 → Valid 30 days
+                  </div>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', marginBottom: 12 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)' }}>
+                    Renewal Review
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.7)', padding: '6px 10px', background: 'rgba(255,255,255,0.08)', borderRadius: 999 }}>
+                    $20 Fee
+                  </div>
                 </div>
                 <div className="tv-split">
                   {[['🎟️', '$30', 'FCFC #1'], ['🎟️', '$30', 'FCFC #2'], ['🎟️', '$30', 'FCFC #3']].map(([e, v, l]) => (
@@ -341,14 +413,20 @@ export default function Home() {
             </p>
           </div>
           <div className="feature-grid">
-            {features.map(f => (
-              <div key={f.title} className="feature-card">
+            {features.map((f, index) => (
+              <motion.div
+                key={f.title}
+                className="feature-card"
+                data-aos="fade-up"
+                data-aos-delay={(index % 3) * 80}
+                whileHover={{ y: -5 }}
+              >
                 <div className="feature-icon" style={{ background: `${f.color}15` }}>
                   <span style={{ color: f.color }}>{f.icon}</span>
                 </div>
                 <div className="feature-title">{f.title}</div>
                 <div className="feature-desc">{f.desc}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

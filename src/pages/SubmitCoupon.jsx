@@ -32,7 +32,7 @@ export default function SubmitCoupon() {
                 <div className="form-subtitle">Enter the coupon code and your email for verification.</div>
                 <div className="form-group">
                   <label className="form-label">Coupon Code</label>
-                  <input className="neu-input" placeholder="e.g. SUMMER25" value={form.code} onChange={e => set('code', e.target.value.toUpperCase())} style={{ fontFamily: 'monospace', letterSpacing: 3, fontWeight: 700, fontSize: 18, textAlign: 'center' }} />
+                  <input className="neu-input" placeholder="Enter the coupon" value={form.code} onChange={e => set('code', e.target.value.toUpperCase())} style={{ fontFamily: 'monospace', letterSpacing: 3, fontWeight: 700, fontSize: 18, textAlign: 'center' }} />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Email Address</label>

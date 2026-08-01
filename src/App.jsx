@@ -1,20 +1,26 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import BottomNav from './components/BottomNav'
 import ScrollToTop from './components/ScrollToTop'
-import Home from './pages/Home'
-import About from './pages/About'
-import FAQ from './pages/FAQ'
-import GenerateCoupon from './pages/GenerateCoupon'
-import SubmitCoupon from './pages/SubmitCoupon'
-import RenewCoupon from './pages/RenewCoupon'
-import SearchCoupon from './pages/SearchCoupon'
-import ThankYou from './pages/ThankYou'
-import Contact from './pages/Contact'
-import Links from './pages/Links'
-import AdminLogin from './pages/AdminLogin'
-import AdminPanel from './pages/AdminPanel'
+import AnimationProvider from './components/AnimationProvider'
+import PageShell from './components/PageShell'
+
+// Lazy-loaded route components
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const GenerateCoupon = lazy(() => import('./pages/GenerateCoupon'))
+const SubmitCoupon = lazy(() => import('./pages/SubmitCoupon'))
+const RenewCoupon = lazy(() => import('./pages/RenewCoupon'))
+const SearchCoupon = lazy(() => import('./pages/SearchCoupon'))
+const ThankYou = lazy(() => import('./pages/ThankYou'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Links = lazy(() => import('./pages/Links'))
+const AdminLogin = lazy(() => import('./pages/AdminLogin'))
+const AdminPanel = lazy(() => import('./pages/AdminPanel'))
 
 export default function App() {
   const location = useLocation()
@@ -22,23 +28,36 @@ export default function App() {
 
   return (
     <>
+      <AnimationProvider />
       <ScrollToTop />
       {!hideShell && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/how-it-works" element={<FAQ />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/links" element={<Links />} />
-        <Route path="/coupon/generate" element={<GenerateCoupon />} />
-        <Route path="/coupon/submit" element={<SubmitCoupon />} />
-        <Route path="/coupon/renew" element={<RenewCoupon />} />
-        <Route path="/coupon/search" element={<SearchCoupon />} />
-        <Route path="/thank-you" element={<ThankYou />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminPanel />} />
-      </Routes>
+      <Suspense fallback={<div />}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.24, ease: 'easeOut' }}
+          >
+            <Routes location={location}>
+              <Route path="/" element={<PageShell><Home /></PageShell>} />
+              <Route path="/about" element={<PageShell><About /></PageShell>} />
+              <Route path="/faq" element={<PageShell><FAQ /></PageShell>} />
+              <Route path="/how-it-works" element={<PageShell><FAQ /></PageShell>} />
+              <Route path="/contact" element={<PageShell><Contact /></PageShell>} />
+              <Route path="/links" element={<PageShell><Links /></PageShell>} />
+              <Route path="/coupon/generate" element={<PageShell><GenerateCoupon /></PageShell>} />
+              <Route path="/coupon/submit" element={<PageShell><SubmitCoupon /></PageShell>} />
+              <Route path="/coupon/renew" element={<PageShell><RenewCoupon /></PageShell>} />
+              <Route path="/coupon/search" element={<PageShell><SearchCoupon /></PageShell>} />
+              <Route path="/thank-you" element={<PageShell><ThankYou /></PageShell>} />
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin" element={<AdminPanel />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
+      </Suspense>
       {!hideShell && <Footer />}
       {!hideShell && <BottomNav />}
     </>
