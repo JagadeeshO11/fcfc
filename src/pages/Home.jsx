@@ -95,7 +95,7 @@ const features = [
   { icon: <Network size={24} />, title: 'FCFC Crowd Distribution',      desc: 'Each FCFC redemption spawns 3 new Fortune Crowd Fund Coupons, creating an exponential crowd effect that rewards every member.',          color: '#27ae60' },
   { icon: <Wallet size={24} />,  title: 'Multiple Payment Options',       desc: 'Connect MetaMask, WalletConnect, Coinbase Wallet or pay by card through multiple payment gateways. Full flexibility for every FCFC community member.',                    color: '#e67e22' },
   { icon: <QrCode size={24} />,  title: 'Instant Coupon Code',        desc: 'Every Fortune Crowd Fund Coupon gets a unique coupon code for fast redemption at any participating merchant.',                   color: '#9b59b6' },
-  { icon: <Globe size={24} />,   title: 'Global 150+ Countries',        desc: 'Deploy FCFC campaigns worldwide with multi-currency support and localised Fortune Crowd Fund Coupon redemption infrastructure.',          color: '#e74c3c' },
+  { icon: <Globe size={24} />,   title: 'Global 150+ Countries',        desc: 'Deploy FCFC coupons worldwide with multi-currency support and localised Fortune Crowd Fund Coupon redemption infrastructure.',          color: '#e74c3c' },
 ]
 
 function AnimatedNumber({ target }) {
@@ -140,8 +140,8 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <Link to="/campaign/start" className="hero-btn-primary">
-                Start Your Campaign <ArrowRight size={15} />
+              <Link to="/coupon/generate" className="hero-btn-primary">
+                Generate Your Coupon <ArrowRight size={15} />
               </Link>
               <Link to="/how-it-works" className="hero-btn-ghost-dark">
                 How It Works ▶

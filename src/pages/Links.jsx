@@ -158,7 +158,7 @@ export default function Links() {
                 Generate your first Fortune Crowd Fund Coupon and join the growing crowd today.
               </p>
               <Link to="/coupon/generate" style={{ background: '#fff', color: 'var(--navy)', borderRadius: 12, padding: '13px 28px', fontWeight: 800, textDecoration: 'none', fontSize: 14, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                Start Campaign <ArrowRight size={15} />
+                Generate Coupon <ArrowRight size={15} />
               </Link>
             </div>
           </div>

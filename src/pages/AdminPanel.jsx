@@ -22,7 +22,7 @@ export default function AdminPanel() {
 
   const dummyGenerated = [
     { code: 'FCFC-8JY4QL', email: 'creator@example.com', createdAt: '2026-07-25T10:15:00Z', verifiedAt: '2026-07-25T10:15:00Z', submittedFrom: '-' },
-    { code: 'FCFC-ZP3LQ2', email: 'campaign@demo.com', createdAt: '2026-07-26T13:30:00Z', verifiedAt: '2026-07-26T13:30:00Z', submittedFrom: 'SUMMER2026' },
+    { code: 'FCFC-ZP3LQ2', email: 'coupon@demo.com', createdAt: '2026-07-26T13:30:00Z', verifiedAt: '2026-07-26T13:30:00Z', submittedFrom: 'SUMMER2026' },
   ]
   const dummySubmissions = [
     { originalCode: 'SUMMER2026', email: 'supporter@example.com', generated: ['FCFC-98GVPL', 'FCFC-QW7RZ2', 'FCFC-XY9KT1'], createdAt: '2026-07-28T08:45:00Z' },
@@ -30,7 +30,7 @@ export default function AdminPanel() {
   ]
   const dummyRenewed = [
     { code: 'FCFC-8JY4QL', wallet: '0xA1b2...F9c0', newEnd: '2026-12-31', createdAt: '2026-07-30T09:00:00Z', email: 'creator@example.com', generatedDate: '2026-07-25T10:15:00Z', submittedFrom: '-' },
-    { code: 'FCFC-ZP3LQ2', wallet: '0xD4e5...B1f2', newEnd: '2026-11-15', createdAt: '2026-07-30T12:05:00Z', email: 'campaign@demo.com', generatedDate: '2026-07-26T13:30:00Z', submittedFrom: 'SUMMER2026' },
+    { code: 'FCFC-ZP3LQ2', wallet: '0xD4e5...B1f2', newEnd: '2026-11-15', createdAt: '2026-07-30T12:05:00Z', email: 'coupon@demo.com', generatedDate: '2026-07-26T13:30:00Z', submittedFrom: 'SUMMER2026' },
   ]
   const dummyTransactions = [
     { id: 'txn-001', date: '2026-07-30T14:10:00Z', email: 'supporter@example.com', coupon: 'SUMMER2026', amount: '₹499', status: 'Completed' },

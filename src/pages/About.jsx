@@ -38,7 +38,7 @@ export default function About() {
               </div>
               <h2 className="section-title">Building the Future of Community Support</h2>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 20 }}>
-                FCFC empowers creators and communities to fund goals using unique, trackable coupons. Share your story, create a campaign, distribute coupons, and let your network show support — transparently and securely.
+                FCFC empowers creators and communities to fund goals using unique, trackable coupons. Share your story, generate coupons, and let your network show support transparently and securely.
               </p>
               <p style={{ fontSize: 16, color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 32 }}>
                 Our ecosystem focuses on impact: one coupon can multiply support across a community, turning individual contributions into measurable, collective progress.
@@ -68,7 +68,7 @@ export default function About() {
               <div className="neu-card">
                 <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--navy)', marginBottom: 16 }}>Our Mission</h3>
                 <p style={{ fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.7 }}>
-                  To democratize coupon campaigns through the Fortune Crowd Fund Coupon model — making fraud a thing of the past and empowering communities of all sizes to run effective, verifiable, and self-multiplying promotions.
+                  To democratize coupon-powered support through the Fortune Crowd Fund Coupon model, making fraud a thing of the past and helping communities run effective, verifiable, self-multiplying promotions.
                 </p>
               </div>
             </div>

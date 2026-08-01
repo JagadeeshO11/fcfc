@@ -12,7 +12,7 @@ export default function Footer() {
             <img src={logo} alt="FCFC" style={{ height: 36, filter: 'brightness(0) invert(1)' }} />
             <span style={{ fontSize: 20, fontWeight: 800, color: '#fff' }}>FCFC</span>
           </div>
-          <p>The next-generation coupon campaign platform. Create, manage, and track coupons with blockchain-powered transparency.</p>
+          <p>The next-generation coupon platform. Create, manage, and track coupons with blockchain-powered transparency.</p>
           <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
             {[Share2, GitBranch, Globe, Mail].map((Icon, i) => (
               <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(255,255,255,0.7)', transition: 'all 0.2s' }}

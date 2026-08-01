@@ -19,7 +19,7 @@ export default function RenewCoupon() {
     <main>
       <div className="page-header">
         <h1>Renew Coupon</h1>
-        <p>Extend the validity of an existing coupon campaign.</p>
+        <p>Extend the validity of an existing coupon.</p>
       </div>
 
       <section className="section">
@@ -72,7 +72,7 @@ export default function RenewCoupon() {
                   <label className="form-label">Renewal Reason</label>
                   <select className="neu-input" value={form.reason} onChange={e => set('reason', e.target.value)}>
                     <option value="">Select reason</option>
-                    <option>Campaign Extension</option>
+                    <option>Coupon Extension</option>
                     <option>Low Redemption Rate</option>
                     <option>Seasonal Promotion</option>
                     <option>Partner Request</option>

@@ -76,7 +76,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <Link to="/coupon/generate" className="neu-btn neu-btn-primary nav-cta">
-          <Ticket size={15} /> Start Campaign
+          <Ticket size={15} /> Generate Coupon
         </Link>
 
         {/* Mobile hamburger */}

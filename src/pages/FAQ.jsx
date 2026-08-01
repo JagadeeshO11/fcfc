@@ -9,32 +9,32 @@ const faqs = [
   {
     category: 'General',
     items: [
-      { q: "What does 'Self Crowd Fund Through Coupon Based' mean?", a: "It means you can raise support by creating a campaign and sharing unique FCFC coupons—people show support by using or purchasing those coupons, which funds your goal while growing your network." },
-      { q: 'How do I start a campaign on FCFC?', a: 'Create a campaign with your story and goal, set a coupon offering, then share the coupon link with your network to begin receiving support.' },
-      { q: 'What is the typical campaign flow?', a: 'Create campaign → Generate coupons → Share with network → Supporters use/purchase coupons → Funds aggregate toward the campaign goal.' },
+      { q: "What does 'Self Crowd Fund Through Coupon Based' mean?", a: "It means you can raise support by generating and sharing unique FCFC coupons. People support you by using or purchasing those coupons, which funds your goal while growing your network." },
+      { q: 'How do I start on FCFC?', a: 'Generate a coupon with your story and goal, then share the coupon link with your network to begin receiving support.' },
+      { q: 'What is the typical coupon flow?', a: 'Generate coupon → Share with network → Supporters use or purchase coupons → Funds aggregate toward your goal.' },
     ]
   },
   {
     category: 'Coupons',
     items: [
       { q: 'What makes an FCFC coupon special?', a: 'FCFC coupons are smart, unique and trackable—each has a distinct code/QR and on-chain verification so support is transparent and tamper-proof.' },
-      { q: 'How do I share coupons to get support?', a: 'Generate coupons from your campaign dashboard, then share them via link, social, or direct messaging—every share increases reach and potential backers.' },
+      { q: 'How do I share coupons to get support?', a: 'Generate coupons from your coupon dashboard, then share them via link, social, or direct messaging. Every share increases reach and potential backers.' },
       { q: 'Can one coupon really help many people?', a: 'Yes—FCFC is designed so a single coupon can trigger distribution mechanics that scale community support, amplifying impact across members.' },
     ]
   },
   {
     category: 'Payments gateway',
     items: [
-      { q: 'How do supporters pay or contribute?', a: 'Supporters can use the integrated payments gateway (cards) or connected wallets; payments convert into campaign support according to the coupon rules you configure.' },
-      { q: 'Which payment methods are supported?', a: 'FCFC supports common card payments and major crypto wallets; available options depend on region and the campaign settings.' },
-      { q: 'Are there fees or currency conversions?', a: 'Fees and conversions depend on the chosen payment provider and blockchain used; we surface expected charges during campaign setup so you can plan accordingly.' },
+      { q: 'How do supporters pay or contribute?', a: 'Supporters can use the integrated payments gateway or connected wallets. Payments convert into coupon-based support according to the rules you configure.' },
+      { q: 'Which payment methods are supported?', a: 'FCFC supports common card payments and major crypto wallets; available options depend on region and coupon settings.' },
+      { q: 'Are there fees or currency conversions?', a: 'Fees and conversions depend on the chosen payment provider and blockchain used. We show expected charges during coupon setup so you can plan clearly.' },
     ]
   },
   {
     category: 'Security',
     items: [
       { q: 'How is coupon fraud prevented?', a: 'Each coupon is recorded and signed on-chain, and redemptions are validated cryptographically—this prevents duplication and ensures authenticity.' },
-      { q: 'Where is campaign data stored?', a: 'Campaign metadata is stored with verifiable, tamper-evident methods (e.g., IPFS) while sensitive user info follows encryption and privacy best practices.' },
+      { q: 'Where is coupon data stored?', a: 'Coupon metadata is stored with verifiable, tamper-evident methods such as IPFS, while sensitive user info follows encryption and privacy best practices.' },
       { q: 'How transparent are funds and redemptions?', a: 'FCFC provides transparent ledgers for coupon issuance and redemption so creators and supporters can audit activity and trust outcomes.' },
     ]
   },
@@ -69,7 +69,7 @@ export default function FAQ() {
             <HelpCircle size={14} /> Help Center
           </div>
           <h1>Frequently Asked Questions</h1>
-          <p>Everything you need to know about FCFC and coupon campaigns.</p>
+          <p>Everything you need to know about FCFC and coupon-powered support.</p>
           <div className="faq-hero-stats">
             {[['50+', 'Questions Answered'], ['24/7', 'Support Available'], ['38K+', 'Community Members']].map(([n, l]) => (
               <div key={l} className="faq-hero-stat">

@@ -46,7 +46,7 @@ export default function SearchCoupon() {
                 <Search size={18} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                 <input
                   className="neu-input"
-                  placeholder="Search by coupon code or campaign name..."
+                  placeholder="Search by coupon code or coupon name..."
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && setSearched(true)}
@@ -125,7 +125,7 @@ export default function SearchCoupon() {
               <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'var(--bg)', boxShadow: 'var(--shadow-card)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                 <Search size={32} color="var(--text-muted)" />
               </div>
-              <p style={{ color: 'var(--text-muted)', fontSize: 15 }}>Enter a coupon code or campaign name to search.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: 15 }}>Enter a coupon code or coupon name to search.</p>
             </div>
           )}
         </div>

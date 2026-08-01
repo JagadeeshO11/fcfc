@@ -4,7 +4,7 @@ import { Ticket, ChevronRight, ChevronLeft } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
 import './GenerateCoupon.css'
 
-const steps = ['Campaign Details', 'Payment', 'Review & Generate']
+const steps = ['Coupon Details', 'Payment', 'Review & Generate']
 
 export default function GenerateCoupon() {
   const [step, setStep] = useState(0)
@@ -30,7 +30,7 @@ export default function GenerateCoupon() {
       const existing = JSON.parse(localStorage.getItem('generatedCoupons') || '[]')
       existing.unshift({
         code,
-        campaign: form.name || '—',
+        couponName: form.name || '—',
         email: form.email || '—',
         discount: form.discount || '—',
         createdAt: now,
@@ -51,7 +51,7 @@ export default function GenerateCoupon() {
     <main>
       <div className="page-header">
         <h1>Generate Coupon</h1>
-        <p>Create a new blockchain-verified coupon campaign in 3 easy steps.</p>
+        <p>Create a new blockchain-verified coupon in 3 easy steps.</p>
       </div>
 
       <section className="section">
@@ -61,10 +61,10 @@ export default function GenerateCoupon() {
 
             {step === 0 && (
               <>
-                <div className="form-title">Campaign Information</div>
-                <div className="form-subtitle">Enter your campaign details to generate a coupon.</div>
+                <div className="form-title">Coupon Information</div>
+                <div className="form-subtitle">Enter your coupon details and generate a verified FCFC code.</div>
                 <div className="form-group">
-                  <label className="form-label">Campaign Name</label>
+                  <label className="form-label">Coupon Name</label>
                   <input className="neu-input" placeholder="e.g. Summer Mega Sale 2025" value={form.name} onChange={e => set('name', e.target.value)} />
                 </div>
                 <div className="form-group">
@@ -100,7 +100,7 @@ export default function GenerateCoupon() {
                 <div className="form-subtitle">Confirm your coupon details before generating.</div>
                 <div style={{ background: 'var(--bg)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-in)', padding: 24, marginBottom: 24 }}>
                   {[
-                    ['Campaign Name', form.name || '—'],
+                    ['Coupon Name', form.name || '—'],
                     ['Email', form.email || '—'],
                     ['Coupon Code', form.code || '—'],
                     ['Discount', form.discount ? `${form.discount}%` : '—'],

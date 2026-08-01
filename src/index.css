@@ -374,14 +374,14 @@ body {
 
 .stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 
-/* ── Campaign Cards ── */
-.campaigns-grid {
+/* ── Coupon Cards ── */
+.coupons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
-.campaign-card {
+.coupon-card {
   background: var(--bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
@@ -389,12 +389,12 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.campaign-card:hover {
+.coupon-card:hover {
   transform: translateY(-6px);
   box-shadow: 12px 12px 28px #c0c5d0, -8px -8px 20px #ffffff;
 }
 
-.campaign-img {
+.coupon-img {
   height: 180px;
   background: linear-gradient(135deg, var(--navy), var(--accent));
   display: flex;
@@ -404,7 +404,7 @@ body {
   overflow: hidden;
 }
 
-.campaign-img-icon {
+.coupon-img-icon {
   font-size: 64px;
   opacity: 0.3;
   position: absolute;
@@ -412,9 +412,9 @@ body {
   bottom: -10px;
 }
 
-.campaign-body { padding: 24px; }
+.coupon-body { padding: 24px; }
 
-.campaign-tag {
+.coupon-tag {
   display: inline-block;
   background: var(--bg);
   box-shadow: var(--shadow-out);
@@ -428,21 +428,21 @@ body {
   margin-bottom: 12px;
 }
 
-.campaign-title {
+.coupon-title {
   font-size: 17px;
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 8px;
 }
 
-.campaign-desc {
+.coupon-desc {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 16px;
 }
 
-.campaign-progress-label {
+.coupon-progress-label {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -805,7 +805,7 @@ body {
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .campaigns-grid { grid-template-columns: repeat(2, 1fr); }
+  .coupons-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .links-grid { grid-template-columns: repeat(2, 1fr); }
@@ -814,7 +814,7 @@ body {
 @media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
-  .campaigns-grid { grid-template-columns: 1fr; }
+  .coupons-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .nav-links { display: none; }

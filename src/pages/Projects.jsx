@@ -4,9 +4,9 @@ import './Projects.css'
 
 const projects = [
   {
-    emoji: '🎟️', title: 'FCFC Genesis Campaign',
+    emoji: '🎟️', title: 'FCFC Genesis Coupon',
     tag: 'Active', tagColor: '#27ae60',
-    desc: 'The original Fortune Crowd Fund Coupon campaign. Buy a $50 FCFC, transfer to User B, redeem + pay $20, receive 3 new FCFCs worth $30 each.',
+    desc: 'The original Fortune Crowd Fund Coupon cycle. Buy a $50 FCFC, transfer to User B, redeem + pay $20, and receive 3 new FCFCs worth $30 each.',
     members: '12,400+', value: '$620K', progress: 82, color: '#4A90D9',
   },
   {
@@ -36,7 +36,7 @@ const projects = [
   {
     emoji: '📊', title: 'FCFC Analytics Dashboard',
     tag: 'Coming Soon', tagColor: '#7f8c9a',
-    desc: 'Real-time analytics for every FCFC campaign — track coupon flow, crowd growth, redemption rates, and net value cycled across the network.',
+    desc: 'Real-time analytics for every FCFC coupon cycle. Track coupon flow, crowd growth, redemption rates, and net value cycled across the network.',
     members: '—', value: '—', progress: 15, color: '#e74c3c',
   },
 ]
@@ -53,7 +53,7 @@ export default function Projects() {
     <main>
       <div className="page-header">
         <h1>Explore Projects</h1>
-        <p>Discover active Fortune Crowd Fund Coupon campaigns and join the growing FCFC ecosystem.</p>
+        <p>Discover active Fortune Crowd Fund Coupon cycles and join the growing FCFC ecosystem.</p>
       </div>
 
       {/* Stats */}
@@ -78,11 +78,11 @@ export default function Projects() {
         <div className="page-wrapper">
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <div className="workflow-eyebrow" style={{ marginBottom: 16 }}>
-              <Star size={13} /> FCFC Campaigns
+              <Star size={13} /> FCFC Coupons
             </div>
-            <h2 className="section-title">All Active Campaigns</h2>
+            <h2 className="section-title">All Active Coupons</h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Each project is a self-sustaining Fortune Crowd Fund Coupon cycle — join any campaign and start multiplying your coupons.
+              Each project is a self-sustaining Fortune Crowd Fund Coupon cycle. Join any coupon flow and start multiplying your coupons.
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function Projects() {
                   </div>
 
                   <div className="project-progress-label">
-                    <span>Campaign Progress</span>
+                    <span>Coupon Progress</span>
                     <span style={{ color: p.color, fontWeight: 700 }}>{p.progress}%</span>
                   </div>
                   <div className="progress-bar-wrap">
@@ -119,7 +119,7 @@ export default function Projects() {
                   </div>
 
                   <Link to="/coupon/generate" className="project-cta" style={{ borderColor: `${p.color}40`, color: p.color }}>
-                    Join Campaign <ArrowRight size={14} />
+                    Join Coupon <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function Projects() {
                 <Zap size={13} /> Start Today
               </div>
               <h2 style={{ fontSize: 'clamp(24px,4vw,38px)', fontWeight: 800, color: '#fff', marginBottom: 12 }}>
-                Launch Your Own FCFC Campaign
+                Launch Your Own FCFC Coupon
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, marginBottom: 28, maxWidth: 480, margin: '0 auto 28px', lineHeight: 1.7 }}>
                 Generate your Fortune Crowd Fund Coupon, share it with the crowd, and watch your community grow 3× with every redemption.
