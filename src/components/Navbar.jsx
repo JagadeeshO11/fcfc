@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { ChevronDown, Ticket, RefreshCw, Search, Send, ExternalLink } from 'lucide-react'
+import { ChevronDown, Ticket, RefreshCw, Search, Send, Menu, X } from 'lucide-react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 
@@ -11,24 +11,33 @@ const couponItems = [
   { label: 'Search Coupon',   path: '/coupon/search',   icon: <Search size={15} /> },
 ]
 
-const mobileLinks = [
-  { label: 'Home',             path: '/' },
-  { label: 'About Us',         path: '/about' },
-  { label: 'FAQ',              path: '/faq' },
-  { label: 'Contact',          path: '/contact' },
-  { label: 'Generate Coupon',  path: '/coupon/generate' },
-  { label: 'Submit Coupon',    path: '/coupon/submit' },
-  { label: 'Renew Coupon',     path: '/coupon/renew' },
-  { label: 'Search Coupon',    path: '/coupon/search' },
+// Desktop nav links
+const desktopLinks = [
+  { label: 'Home',          path: '/' },
+  { label: 'About',         path: '/about' },
+  { label: 'Links',         path: '/links' },
+  { label: 'Gallery',       path: '/gallery' },
+  { label: 'Presentations', path: '/presentations' },
+]
+
+// Mobile hamburger dropdown (remaining pages not in bottom nav)
+const hamburgerLinks = [
+  { label: 'About Us',  path: '/about' },
+  { label: 'FAQ',       path: '/faq' },
+  { label: 'Contact',   path: '/contact' },
+  { label: 'Projects',  path: '/projects' },
 ]
 
 export default function Navbar() {
-  const [dropOpen, setDropOpen] = useState(false)
-  const dropRef = useRef(null)
+  const [dropOpen, setDropOpen]     = useState(false)
+  const [menuOpen, setMenuOpen]     = useState(false)
+  const dropRef  = useRef(null)
+  const menuRef  = useRef(null)
 
   useEffect(() => {
     const handler = (e) => {
       if (dropRef.current && !dropRef.current.contains(e.target)) setDropOpen(false)
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false)
     }
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
@@ -40,16 +49,18 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="nav-logo">
           <img src={logo} alt="FCFC Logo" />
-          <span className="nav-logo-text">FCFC</span>
+          <span className="nav-logo-text">Fortune Crowd Fund Coupon (FCFC)</span>
         </Link>
 
         {/* Desktop Links */}
         <ul className="nav-links">
-          <li><NavLink to="/" end>Home</NavLink></li>
-          <li><NavLink to="/about">About Us</NavLink></li>
-          <li><NavLink to="/faq">FAQ</NavLink></li>
-          <li><NavLink to="/contact">Contact</NavLink></li>
+          {desktopLinks.map(l => (
+            <li key={l.path}>
+              <NavLink to={l.path} end={l.path === '/'}>{l.label}</NavLink>
+            </li>
+          ))}
 
+          {/* Coupon dropdown */}
           <li className="dropdown" ref={dropRef}>
             <div className="dropdown-toggle" onClick={() => setDropOpen(o => !o)}>
               <Ticket size={15} />
@@ -66,6 +77,9 @@ export default function Navbar() {
               </div>
             )}
           </li>
+
+          <li><NavLink to="/faq">FAQ</NavLink></li>
+          <li><NavLink to="/contact">Contact</NavLink></li>
         </ul>
 
         {/* Desktop CTA */}
@@ -73,6 +87,29 @@ export default function Navbar() {
           <Ticket size={15} /> Generate Coupon
         </Link>
 
+        {/* Mobile hamburger */}
+        <div className="nav-hamburger-wrap" ref={menuRef}>
+          <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+
+          {menuOpen && (
+            <div className="hamburger-dropdown">
+              <div className="hamburger-dropdown-title">More Pages</div>
+              {hamburgerLinks.map(l => (
+                <NavLink
+                  key={l.path}
+                  to={l.path}
+                  className={({ isActive }) => `mobile-link${isActive ? ' active' : ''}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {l.label}
+                </NavLink>
+              ))}
+
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   )

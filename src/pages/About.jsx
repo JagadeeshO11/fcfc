@@ -1,6 +1,8 @@
 import { Shield, Zap, Globe, Users, Award, Target, MapPin, Briefcase, Star } from 'lucide-react'
 import logo from '../assets/logo.png'
 import ceoImg from '../assets/ceo.png'
+import signImg from '../assets/sign.png'
+import couponImg from '../assets/coupon-sample.png'
 import './About.css'
 
 const values = [
@@ -16,15 +18,22 @@ export default function About() {
   return (
     <main>
       <div className="page-header">
-        <h1>About FCFC</h1>
-        <p>Self Crowd-Fund through coupon-based support — raise your dream with your network.</p>
-        <div className="about-header-stats">
-          {[['2,500+', 'Happy Supporters'], ['18,000+', 'Coupons Shared'], ['₹3.25 Cr+', 'Funds Raised'], ['650+', 'Dreams Supported']].map(([n, l]) => (
-            <div key={l} className="about-header-stat">
-              <div className="about-header-stat-num">{n}</div>
-              <div className="about-header-stat-label">{l}</div>
+        <div className="about-header-inner">
+          <div className="about-header-content">
+            <h1>About FCFC</h1>
+            <p>Self Crowd-Fund through coupon-based support — raise your dream with your network.</p>
+            <div className="about-header-stats">
+              {[['2,500+', 'Happy Supporters'], ['18,000+', 'Coupons Shared'], ['₹3.25 Cr+', 'Funds Raised'], ['650+', 'Dreams Supported']].map(([n, l]) => (
+                <div key={l} className="about-header-stat">
+                  <div className="about-header-stat-num">{n}</div>
+                  <div className="about-header-stat-label">{l}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="about-header-coupon">
+            <img src={couponImg} alt="FCFC Coupon Sample" />
+          </div>
         </div>
       </div>
 
@@ -85,8 +94,14 @@ export default function About() {
           </div>
 
           <div className="ceo-card">
-            <div className="ceo-avatar">
-              <img src={ceoImg} alt="Mr. James Knight" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 28 }} />
+            <div className="ceo-left">
+              <div className="ceo-avatar">
+                <img src={ceoImg} alt="Mr. James Knight" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 28 }} />
+              </div>
+              <div className="ceo-signature">
+                <img src={signImg} alt="James Knight Signature" />
+                <span>Mr. James Knight</span>
+              </div>
             </div>
             <div className="ceo-info">
               <div className="ceo-name">Mr. James Knight</div>

@@ -161,7 +161,7 @@ export default function Home() {
           >
             <div className="hero-badge-glass" style={{ color: '#38bdf8' }}>
               <Star size={13} fill="currentColor" />
-              <span>FCFC — Fortune Crowd Fund Coupon</span>
+              <span>FCFC (Fortune Crowd Fund Coupon)</span>
             </div>
 
             <h1 className="hero-col-title">

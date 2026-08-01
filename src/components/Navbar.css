@@ -134,20 +134,52 @@
 .nav-cta { text-decoration: none !important; }
 
 /* ── Hamburger ── */
-.nav-hamburger {
+.nav-hamburger-wrap {
   display: none;
+  position: relative;
+}
+.nav-hamburger {
   background: var(--bg);
   border: none;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-out);
   width: 40px;
   height: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--navy);
   -webkit-tap-highlight-color: transparent;
   outline: none;
+}
+.hamburger-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  min-width: 220px;
+  padding: 10px 8px;
+  z-index: 9999;
+  animation: fadeDown 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hamburger-dropdown-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  padding: 4px 10px 6px;
+}
+.hamburger-divider {
+  height: 1px;
+  background: rgba(0,0,0,0.07);
+  margin: 6px 0;
 }
 
 .mobile-link.active {
@@ -157,6 +189,29 @@
   font-weight: 700;
 }
 
+/* ── TV / Large ≥ 1600px ── */
+@media (min-width: 1600px) {
+  .navbar-inner  { height: 84px; max-width: 1520px; }
+  .nav-logo img  { height: 52px; }
+  .nav-logo-text { font-size: 20px; }
+  .nav-links a, .dropdown-toggle { font-size: 16px; padding: 10px 18px; }
+  .nav-cta { font-size: 15px; padding: 13px 28px; }
+}
+
+/* ── Small Laptop 1025–1279px ── */
+@media (max-width: 1279px) {
+  .navbar-inner  { gap: 16px; }
+  .nav-logo-text { font-size: 15px; }
+  .nav-links a, .dropdown-toggle { font-size: 13px; padding: 7px 10px; }
+}
+
+/* ── Tablet Landscape 769–1024px ── */
+@media (max-width: 1024px) {
+  .nav-logo-text { display: none; }
+  .nav-cta { padding: 10px 16px; font-size: 13px; }
+}
+
+/* ── Tablet Portrait + Mobile ≤ 768px ── */
 @media (max-width: 768px) {
   .navbar {
     position: fixed !important;
@@ -173,12 +228,9 @@
     padding-left: 14px;
     padding-right: 14px;
   }
-  .navbar-inner {
-    height: 64px;
-    gap: 12px;
-  }
-  .nav-logo img { height: 38px; }
-  .nav-logo-text { font-size: 17px; }
+  .navbar-inner { height: 64px; gap: 12px; }
+  .nav-logo img  { height: 38px; }
+  .nav-logo-text { display: none; }
   body {
     padding-top: calc(64px + env(safe-area-inset-top));
     -webkit-overflow-scrolling: touch;
@@ -189,7 +241,7 @@
     padding: 10px 14px 14px;
     max-height: calc(100svh - 64px - env(safe-area-inset-top));
   }
-  .nav-links  { display: none !important; }
-  .nav-cta    { display: none !important; }
-  .nav-hamburger { display: flex !important; }
+  .nav-links          { display: none !important; }
+  .nav-cta            { display: none !important; }
+  .nav-hamburger-wrap { display: block !important; }
 }
