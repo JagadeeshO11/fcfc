@@ -145,7 +145,7 @@ export default function FAQ() {
             ].map(v => (
               <div key={v.title} className="faq-video-card">
                 <div className="faq-video-wrap">
-                  <video src={v.src} controls muted playsInline preload="metadata" />
+                  <video src={v.src} controls autoPlay loop muted playsInline preload="metadata" />
                 </div>
                 <div className="faq-video-info">
                   <div className="faq-video-title">{v.title}</div>
