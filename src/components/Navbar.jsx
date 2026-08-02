@@ -25,7 +25,6 @@ const hamburgerLinks = [
   { label: 'About Us',  path: '/about' },
   { label: 'FAQ',       path: '/faq' },
   { label: 'Contact',   path: '/contact' },
-  { label: 'Projects',  path: '/projects' },
 ]
 
 export default function Navbar() {
@@ -50,6 +49,7 @@ export default function Navbar() {
         <Link to="/" className="nav-logo">
           <img src={logo} alt="FCFC Logo" />
           <span className="nav-logo-text">Fortune Crowd Fund Coupon (FCFC)</span>
+          <span className="nav-logo-mobile">Fortune Crowd Fund Coupon (FCFC)</span>
         </Link>
 
         {/* Desktop Links */}
