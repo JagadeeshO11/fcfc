@@ -275,7 +275,7 @@
 /* ══════════════════════════════════════
    HOW IT WORKS — ANIMATED TIMELINE
 ══════════════════════════════════════ */
-.timeline-section { padding: 100px 0; }
+.timeline-section { padding: 0 0 60px; }
 .timeline-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -286,7 +286,7 @@
 .timeline-item {
   display: flex;
   gap: 20px;
-  padding-bottom: 36px;
+  padding-bottom: 48px;
   position: relative;
 }
 .timeline-item:not(:last-child)::after {
@@ -613,7 +613,8 @@
   .stats-grid    { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .timeline-grid { grid-template-columns: 1fr; gap: 32px; }
   .workflow-section { padding: 52px 0; }
-  .timeline-section { padding: 52px 0; }
+  .timeline-section { padding: 0 0 40px; }
+  .timeline-item { padding-bottom: 40px; }
   .timeline-visual  { padding: 22px 16px; }
   .tv-coupon-header { flex-direction: column; gap: 8px; }
   .tv-transfer      { flex-direction: column; }

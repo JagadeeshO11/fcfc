@@ -1,8 +1,9 @@
-import { Shield, Zap, Globe, Users, Award, Target, MapPin, Briefcase, Star } from 'lucide-react'
+import { Shield, Zap, Globe, Users, Award, Target, MapPin, Briefcase, Star, BadgeCheck } from 'lucide-react'
 import logo from '../assets/logo.png'
 import ceoImg from '../assets/ceo.png'
 import signImg from '../assets/sign.png'
 import couponImg from '../assets/coupon-sample.png'
+import regImg from '../assets/reg.png'
 import './About.css'
 
 const values = [
@@ -133,6 +134,37 @@ export default function About() {
                     <div className="ceo-stat-label">{l}</div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Registration Certificate ── */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="page-wrapper">
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            <h2 className="section-title">Company Registration</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>Officially registered and certified by the Government of the British Virgin Islands.</p>
+          </div>
+          <div className="reg-cert-card">
+            <div className="reg-cert-img-wrap">
+              <img src={regImg} alt="FCFC Company Registration Certificate — British Virgin Islands" />
+            </div>
+            <div className="reg-cert-details">
+              <div className="reg-cert-badge">
+                <BadgeCheck size={16} color="#27ae60" />
+                Government Certified · British Virgin Islands
+              </div>
+              <div className="reg-cert-title">Official Company Registration Certificate</div>
+              <div className="reg-cert-desc">
+                Fortune Crowd Fund Coupon (FCFC) is a fully registered and legally recognised company under the jurisdiction of the British Virgin Islands. This certificate is issued by the BVI Financial Services Commission and confirms our compliance with all applicable regulations.
+              </div>
+              <div className="reg-cert-footer">
+                <div className="reg-cert-item"><span>Issuing Authority</span><strong>Government of the British Virgin Islands</strong></div>
+                <div className="reg-cert-item"><span>Company Name</span><strong>Fortune Crowd Fund Coupon (FCFC)</strong></div>
+                <div className="reg-cert-item"><span>Jurisdiction</span><strong>British Virgin Islands (BVI)</strong></div>
+                <div className="reg-cert-item"><span>Status</span><strong style={{ color: '#27ae60' }}>✓ Active &amp; Verified</strong></div>
               </div>
             </div>
           </div>
