@@ -337,50 +337,27 @@ export default function Home() {
 
             {/* Right: visual card */}
             <div className="timeline-visual" ref={timelineVisualRef} data-aos="zoom-in">
-              <div className="tv-label">Live FCFC Transaction Preview</div>
+              <div className="tv-label">FCFC Pricing Breakdown</div>
 
-              <div className="tv-coupon">
-                <div className="tv-coupon-header">
-                  <span className="tv-coupon-code">FCFC-A50X</span>
-                  <span className="tv-coupon-badge">✓ On-Chain</span>
+              <div className="tv-step-row tv-step-blue">
+                <div className="tv-step-icon">💳</div>
+                <div className="tv-step-body">
+                  <div className="tv-step-title">Generate · Buy FCFC Coupon</div>
+                  <div className="tv-step-desc">Purchase your Fortune Crowd Fund Coupon to get started.</div>
                 </div>
-                <div className="tv-coupon-value">$50.00</div>
-                <div className="tv-coupon-sub">Fortune Crowd Fund Coupon · Polygon Mainnet</div>
+                <div className="tv-step-price tv-price-blue">$50</div>
               </div>
 
-              <div className="tv-transfer">
-                <div className="tv-user">
-                  <div className="tv-user-emoji">💳</div>
-                  <div className="tv-user-name">Generate</div>
-                  <div className="tv-user-role">FCFC Coupon</div>
-                </div>
-                <div className="tv-arrow-wrap">
-                  <div className="tv-arrow-line" />
-                  <div className="tv-arrow-amount">Submit $10</div>
-                  <div className="tv-arrow-line" />
-                </div>
-                <div className="tv-user">
-                  <div className="tv-user-emoji">🎟️</div>
-                  <div className="tv-user-name">3 Coupons</div>
-                  <div className="tv-user-role">FCFC Reward</div>
-                </div>
-              </div>
-
-              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16, marginTop: 4 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', marginBottom: 12 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)' }}>
-                    Submit $10 → Valid 30 days
+              <div className="tv-step-row tv-step-purple" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div className="tv-step-icon">📤</div>
+                  <div className="tv-step-body">
+                    <div className="tv-step-title">Submit Coupon</div>
+                    <div className="tv-step-desc">Submit your coupon to unlock the reward cycle.</div>
                   </div>
+                  <div className="tv-step-price tv-price-purple">$10</div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', marginBottom: 12 }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, color: 'rgba(255,255,255,0.4)' }}>
-                    Renewal Review
-                  </div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.7)', padding: '6px 10px', background: 'rgba(255,255,255,0.08)', borderRadius: 999 }}>
-                    $20 Fee
-                  </div>
-                </div>
-                <div className="tv-split">
+                <div className="tv-split" style={{ margin: 0 }}>
                   {[['🎟️', '$30', 'FCFC #1'], ['🎟️', '$30', 'FCFC #2'], ['🎟️', '$30', 'FCFC #3']].map(([e, v, l]) => (
                     <div key={l} className="tv-split-coupon">
                       <div className="emoji">{e}</div>
@@ -389,11 +366,22 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: 16, background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: 10, padding: '10px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>Net Gain</span>
-                  <span style={{ fontSize: 16, fontWeight: 800, color: '#4ade80' }}>+$70.00</span>
+              </div>
+
+              {/* Validity + Renewal merged */}
+              <div className="tv-step-row tv-step-green">
+                <div className="tv-step-icon">📅</div>
+                <div className="tv-step-body">
+                  <div className="tv-step-title">Valid 30 Days · Renew $20</div>
+                  <div className="tv-step-desc">Active for 30 days after submission. Pay $20 to extend validity.</div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
+                  <span className="tv-step-price tv-price-green" style={{ fontSize: 17 }}>30d</span>
+                  <span className="tv-step-price" style={{ fontSize: 17, color: '#fbbf24' }}>$20</span>
                 </div>
               </div>
+
+
             </div>
 
           </div>

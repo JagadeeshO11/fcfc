@@ -643,3 +643,78 @@
 @media (prefers-reduced-motion: reduce) {
   .floating-card, .hero-img-badge, .hero-lottie { animation: none !important; }
 }
+
+/* ── Timeline Visual Step Rows ── */
+.tv-step-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+}
+.tv-step-blue   { background: rgba(74,144,217,0.12);  border-color: rgba(74,144,217,0.25); }
+.tv-step-purple { background: rgba(108,99,255,0.12);  border-color: rgba(108,99,255,0.25); }
+.tv-step-green  { background: rgba(39,174,96,0.12);   border-color: rgba(39,174,96,0.25); }
+
+.tv-step-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+
+.tv-step-body { flex: 1; min-width: 0; }
+
+.tv-step-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 2px;
+}
+
+.tv-step-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.tv-step-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+
+.tv-step-price {
+  font-size: 22px;
+  font-weight: 900;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
+}
+.tv-price-blue   { color: #60b3ff; }
+.tv-price-purple { color: #a78bfa; }
+.tv-price-green  { color: #4ade80; }
+
+/* Renewal row */
+.tv-renewal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(230,126,34,0.1);
+  border: 1px solid rgba(230,126,34,0.25);
+  margin-bottom: 14px;
+}
+
+.tv-renewal-fee {
+  font-size: 22px;
+  font-weight: 900;
+  color: #fbbf24;
+  flex-shrink: 0;
+}
