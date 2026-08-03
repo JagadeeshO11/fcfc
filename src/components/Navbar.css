@@ -254,5 +254,5 @@
   }
   .nav-links          { display: none !important; }
   .nav-cta            { display: none !important; }
-  .nav-hamburger-wrap { display: block !important; }
+  .nav-hamburger-wrap { display: none !important; }
 }

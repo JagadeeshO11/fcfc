@@ -1,21 +1,23 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Home, Ticket, ExternalLink, Image, Monitor } from 'lucide-react'
+import { Home, Ticket, Info, Mail, ExternalLink, Image, Monitor } from 'lucide-react'
 import './BottomNav.css'
-
-const items = [
-  { label: 'Home',          path: '/',               icon: <Home size={20} /> },
-  { label: 'Coupon',        path: null,               icon: <Ticket size={20} /> },
-  { label: 'Links',         path: '/links',           icon: <ExternalLink size={20} /> },
-  { label: 'Gallery',       path: '/gallery',         icon: <Image size={20} /> },
-  { label: 'Presents',      path: '/presentations',   icon: <Monitor size={20} /> },
-]
 
 const couponItems = [
   { label: 'Generate', path: '/coupon/generate' },
   { label: 'Submit',   path: '/coupon/submit' },
   { label: 'Renew',    path: '/coupon/renew' },
   { label: 'Search',   path: '/coupon/search' },
+]
+
+const items = [
+  { label: 'Home',    path: '/',               icon: <Home size={18} /> },
+  { label: 'Coupon',  path: null,              icon: <Ticket size={18} /> },
+  { label: 'Links',   path: '/links',          icon: <ExternalLink size={18} /> },
+  { label: 'Gallery', path: '/gallery',        icon: <Image size={18} /> },
+  { label: 'Slides',  path: '/presentations',  icon: <Monitor size={18} /> },
+  { label: 'About',   path: '/about',          icon: <Info size={18} /> },
+  { label: 'Contact', path: '/contact',        icon: <Mail size={18} /> },
 ]
 
 export default function BottomNav() {
@@ -35,6 +37,7 @@ export default function BottomNav() {
             to={item.path}
             end={item.path === '/'}
             className={({ isActive }) => `bottom-nav-item${isActive ? ' active' : ''}`}
+            onClick={() => setCouponOpen(false)}
           >
             <span className="bottom-nav-icon">{item.icon}</span>
             <span className="bottom-nav-label">{item.label}</span>

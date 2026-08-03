@@ -21,11 +21,7 @@ const desktopLinks = [
 ]
 
 // Mobile hamburger dropdown (remaining pages not in bottom nav)
-const hamburgerLinks = [
-  { label: 'About Us',  path: '/about' },
-  { label: 'FAQ',       path: '/faq' },
-  { label: 'Contact',   path: '/contact' },
-]
+const hamburgerLinks = []
 
 export default function Navbar() {
   const [dropOpen, setDropOpen]     = useState(false)
