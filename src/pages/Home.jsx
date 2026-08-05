@@ -10,7 +10,7 @@ import {
   ArrowRightCircle, DollarSign, RefreshCw, GitMerge,
   Wallet, QrCode, Network
 } from 'lucide-react'
-import heroVideo from '../assets/hero-video.mp4'
+import coinImg from '../assets/coin.png'
 import heroImage from '../assets/image.png'
 import './Home.css'
 
@@ -340,7 +340,7 @@ export default function Home() {
               <div className="tv-label">FCFC Pricing Breakdown</div>
 
               <div className="tv-step-row tv-step-blue">
-                <div className="tv-step-icon">💳</div>
+                <div className="tv-step-icon"><img src={coinImg} alt="coin" style={{ width: 28, height: 28, objectFit: 'contain' }} /></div>
                 <div className="tv-step-body">
                   <div className="tv-step-title">Generate · Buy FCFC Coupon</div>
                   <div className="tv-step-desc">Purchase your Fortune Crowd Fund Coupon to get started.</div>
@@ -350,7 +350,7 @@ export default function Home() {
 
               <div className="tv-step-row tv-step-purple" style={{ flexDirection: 'column', alignItems: 'stretch', gap: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                  <div className="tv-step-icon">📤</div>
+                  <div className="tv-step-icon"><img src={coinImg} alt="coin" style={{ width: 28, height: 28, objectFit: 'contain' }} /></div>
                   <div className="tv-step-body">
                     <div className="tv-step-title">Submit Coupon</div>
                     <div className="tv-step-desc">Submit your coupon to unlock the reward cycle.</div>
@@ -370,7 +370,7 @@ export default function Home() {
 
               {/* Validity + Renewal merged */}
               <div className="tv-step-row tv-step-green">
-                <div className="tv-step-icon">📅</div>
+                <div className="tv-step-icon"><img src={coinImg} alt="coin" style={{ width: 28, height: 28, objectFit: 'contain' }} /></div>
                 <div className="tv-step-body">
                   <div className="tv-step-title">Valid 30 Days · Renew $20</div>
                   <div className="tv-step-desc">Active for 30 days after submission. Pay $20 to extend validity.</div>
@@ -437,7 +437,7 @@ export default function Home() {
               </p>
               <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <Link to="/coupon/generate" style={{ background: '#fff', color: 'var(--navy)', borderRadius: 12, padding: '15px 32px', fontWeight: 800, textDecoration: 'none', fontSize: 15, display: 'inline-flex', alignItems: 'center', gap: 10, boxShadow: '0 8px 24px rgba(0,0,0,0.2)' }}>
-                  <Ticket size={17} /> Buy $50 FCFC
+                  <img src={coinImg} alt="coin" style={{ width: 20, height: 20, objectFit: 'contain' }} /> Buy $50 FCFC
                 </Link>
                 <Link to="/coupon/submit" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', borderRadius: 12, padding: '15px 32px', fontWeight: 700, textDecoration: 'none', fontSize: 15, border: '1px solid rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
                   <ArrowRightCircle size={17} /> Redeem FCFC

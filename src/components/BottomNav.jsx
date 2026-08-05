@@ -4,10 +4,11 @@ import { Home, Ticket, Info, Mail, ExternalLink, Image, Monitor } from 'lucide-r
 import './BottomNav.css'
 
 const couponItems = [
-  { label: 'Generate', path: '/coupon/generate' },
-  { label: 'Submit',   path: '/coupon/submit' },
-  { label: 'Renew',    path: '/coupon/renew' },
-  { label: 'Search',   path: '/coupon/search' },
+  { label: 'About Coupon',    path: '/coupon/about' },
+  { label: 'Generate Coupon', path: '/coupon/generate' },
+  { label: 'Submit Coupon',   path: '/coupon/submit' },
+  { label: 'Renew Coupon',    path: '/coupon/renew' },
+  { label: 'Search Coupon',   path: '/coupon/search' },
 ]
 
 const items = [

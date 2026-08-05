@@ -15,6 +15,7 @@ const GenerateCoupon = lazy(() => import('./pages/GenerateCoupon'))
 const SubmitCoupon  = lazy(() => import('./pages/SubmitCoupon'))
 const RenewCoupon   = lazy(() => import('./pages/RenewCoupon'))
 const SearchCoupon  = lazy(() => import('./pages/SearchCoupon'))
+const AboutCoupon   = lazy(() => import('./pages/AboutCoupon'))
 const ThankYou      = lazy(() => import('./pages/ThankYou'))
 const Contact       = lazy(() => import('./pages/Contact'))
 const Links         = lazy(() => import('./pages/Links'))
@@ -50,6 +51,7 @@ export default function App() {
               <Route path="/links"             element={<PageShell><Links /></PageShell>} />
               <Route path="/gallery"           element={<PageShell><Gallery /></PageShell>} />
               <Route path="/presentations"     element={<PageShell><Presentations /></PageShell>} />
+              <Route path="/coupon/about"      element={<PageShell><AboutCoupon /></PageShell>} />
               <Route path="/coupon/generate"   element={<PageShell><GenerateCoupon /></PageShell>} />
               <Route path="/coupon/submit"     element={<PageShell><SubmitCoupon /></PageShell>} />
               <Route path="/coupon/renew"      element={<PageShell><RenewCoupon /></PageShell>} />

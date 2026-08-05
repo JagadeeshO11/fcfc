@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { ChevronDown, Ticket, RefreshCw, Search, Send, Menu, X } from 'lucide-react'
+import { ChevronDown, Ticket, RefreshCw, Search, Send, Menu, X, Info } from 'lucide-react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 
 const couponItems = [
+  { label: 'About Coupon',    path: '/coupon/about',    icon: <Info size={15} /> },
   { label: 'Generate Coupon', path: '/coupon/generate', icon: <Ticket size={15} /> },
   { label: 'Submit Coupon',   path: '/coupon/submit',   icon: <Send size={15} /> },
   { label: 'Renew Coupon',    path: '/coupon/renew',    icon: <RefreshCw size={15} /> },

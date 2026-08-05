@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Ticket, ChevronRight, ChevronLeft } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
+import coinImg from '../assets/coin.png'
 import './GenerateCoupon.css'
 
 const steps = ['Coupon Details', 'Payment', 'Review & Generate']
@@ -77,7 +78,10 @@ export default function GenerateCoupon() {
 
             {step === 1 && (
               <>
-                <div className="form-title">Payment</div>
+                <div className="form-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <img src={coinImg} alt="payment" style={{ width: 28, height: 28, objectFit: 'contain' }} />
+                  Payment
+                </div>
                 <div className="form-subtitle">Complete payment to enable coupon generation.</div>
                 <div className="form-group">
                   <label className="form-label">Name on Card</label>

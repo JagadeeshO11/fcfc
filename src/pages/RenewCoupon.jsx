@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RefreshCw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react'
 import StepIndicator from '../components/StepIndicator'
+import coinImg from '../assets/coin.png'
 import './RenewCoupon.css'
 
 const steps = ['Find Coupon', 'Confirm Renewal']
@@ -61,7 +62,10 @@ export default function RenewCoupon() {
 
             {step === 1 && (
               <>
-                <div className="form-title">Confirm Renewal</div>
+              <div className="form-title" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <img src={coinImg} alt="payment" style={{ width: 28, height: 28, objectFit: 'contain' }} />
+                  Confirm Renewal
+                </div>
                 <div className="form-subtitle">Review and confirm the renewal details.</div>
                 <div style={{ background: 'var(--bg)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-in)', padding: 24, marginBottom: 24 }}>
                   {[['Coupon Code', form.code || '—'], ['Email', form.email || '—']].map(([k, v]) => (
